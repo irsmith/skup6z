@@ -12,15 +12,15 @@
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
-// reference to the detail item and outlets (like java property listeners) for its visual elements.
-@property (nonatomic, strong) ManualInstruction *manualInstruction;//add
+// Strong ref to our detail item.
+// Weak ref to the GUI elements.
+// Identify these as outlets (like java property listeners).
+// An Oulet is like an electrical outlet except little property values come out and splatter GUI.
+@property (nonatomic, strong) ManualInstruction *manualInstruction;
 
 @property (nonatomic, weak) IBOutlet UILabel *instructionIdLabel;
 @property (nonatomic, weak) IBOutlet UILabel *instructionMessageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
 
-// from xcode template
-//@property (strong, nonatomic) id detailItem;
-//@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end

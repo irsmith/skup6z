@@ -60,6 +60,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="53"/>
+                    <connections>
+                        <outlet property="imageTitleLabel" destination="cza-MW-mxv" id="dFX-bH-bH5"/>
+                        <outlet property="instructionIdLabel" destination="q3J-Ox-gPp" id="bVW-JQ-yLo"/>
+                        <outlet property="instructionMessageLabel" destination="rp6-Rf-s34" id="jOo-Uh-jpv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,22 +144,6 @@
             <point key="canvasLocation" x="-366" y="248"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imageTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="instructionIdLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="instructionMessageLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -22,7 +22,7 @@
 @synthesize dataController;
 
 #pragma mark -
-#pragma mark View lifecycle
+#pragma mark - View Lifecycle
 
 - (void)awakeFromNib
 {
@@ -31,7 +31,7 @@
         self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     }
     [super awakeFromNib];
-    self.dataController = [[DataController alloc]init];//bird sighting
+    self.dataController = [[DataController alloc]init];
 
 }
 
@@ -41,8 +41,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
@@ -54,7 +52,7 @@
 
 
 
-#pragma mark - Table View
+#pragma mark - Table View Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -85,14 +83,16 @@
 #pragma mark -
 #pragma mark Table view selection
 
-
+// Aha! we use didSelectRowAtIndexPath only for ipad, we use seque only for iphone
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        NSDate *object = _objects[indexPath.row];
-//        self.detailViewController.detailItem = object;
-//    }
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
+        ManualInstruction *mi = [dataController objectInListAtIndex:selectedRowIndex.row];
+        DetailViewController *detailViewController = self.detailViewController;
+        detailViewController.manualInstruction = mi;
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
