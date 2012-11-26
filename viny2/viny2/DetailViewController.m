@@ -19,18 +19,37 @@
 @synthesize manualInstruction;
 
 #pragma mark - Managing the detail item
+//
+//- (void)setDetailItem:(id)newDetailItem
+//{
+//    if (_detailItem != newDetailItem) {
+//        _detailItem = newDetailItem;
+//        
+//        // Update the view.
+//        [self configureView];
+//    }
+//    
+//    if (self.masterPopoverController != nil) {
+//        [self.masterPopoverController dismissPopoverAnimated:YES];
+//    }
+//}
+//
+//- (void)configureView
+//{
+//    // Update the user interface for the detail item.
+//    
+//    if (self.detailItem) {
+//        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+//    }
+//}
 
-- (void)setDetailItem:(id)newDetailItem
-{
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
-        
-        // Update the view.
+/* Setter for the detail item.
+ For iphone this is called by masterViewController prepareForSegue
+ */
+-(void)setManualInstruction:(ManualInstruction *)newInstruction {
+    if (manualInstruction != newInstruction){
+        manualInstruction = newInstruction;
         [self configureView];
-    }
-    
-    if (self.masterPopoverController != nil) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
     }
 }
 
@@ -38,10 +57,15 @@
 {
     // Update the user interface for the detail item.
     
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
+    ManualInstruction *mi = self.manualInstruction;
+    if (mi) {
+        self.instructionIdLabel.text = mi.instructionIdentifier;
+        self.instructionMessageLabel.text = mi.instructionMessage;
+        self.imageTitleLabel.text = mi.imageTitle;
     }
+    
 }
+
 
 - (void)viewDidLoad
 {

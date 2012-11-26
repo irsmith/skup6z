@@ -12,10 +12,15 @@
 
 @interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
 
+// reference to the detail item and outlets (like java property listeners) for its visual elements.
 @property (nonatomic, strong) ManualInstruction *manualInstruction;//add
 
-@property (strong, nonatomic) id detailItem;
+@property (nonatomic, weak) IBOutlet UILabel *instructionIdLabel;
+@property (nonatomic, weak) IBOutlet UILabel *instructionMessageLabel;
+@property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+// from xcode template
+//@property (strong, nonatomic) id detailItem;
+//@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end
