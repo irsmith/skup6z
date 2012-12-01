@@ -48,11 +48,11 @@
 
 #import "DataController.h"
 #import "ManualInstruction.h"
-
+#import "ProjectConstants.h"
 
 @interface DataController ()
 @property (nonatomic, copy, readwrite) NSMutableArray *list;
-- (void)createDemoData;
+- (NSMutableArray *)createDemoData;
 @end
 
 
@@ -63,8 +63,11 @@
 
 - (id)init {
     if (self = [super init]) {
-        [self createDemoData];
+        self.list = [self createDemoData];
+        
     }
+
+
     return self;
 }
 
@@ -85,31 +88,126 @@
 }
 
 
-
-
-- (void)createDemoData {
-    
-    /*   Create an array containing some demonstration data. */
-    
-    NSMutableArray *instructionList = [[NSMutableArray alloc] init];
+/*   Returns array containing some demonstration data.  */
+- (NSMutableArray *)createDemoData {
     ManualInstruction *instruction;
-      
-	instruction = [[ManualInstruction alloc] init];
-	instruction.instructionIdentifier = @"instr4";
-	instruction.instructionMessage = @"Verify external spotlight D wall switch inside in section A is ON";
-    instruction.imageReference = @"63103_files/external-spotlight-d.jpg";
-    instruction.imageTitle = @"External Spotlight D Wall Switch";
-    [instructionList addObject:instruction];
+    NSDictionary *dictionary;
+    UIImage *img;
+    NSMutableArray *instructionList = [[NSMutableArray alloc] init];
     
-    instruction = [[ManualInstruction alloc] init];
-	instruction.instructionIdentifier = @"instr5";
-	instruction.instructionMessage = @"View spotlight through window in external DMM hatch door";
-    instruction.imageReference = @"63103_files/view-spotlight.jpg";
-    instruction.imageTitle = @"Spotlight through DMM hatch door";
+    //115
+    dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                  @"procedureIdentifier 63115 block3", instructionIDKey,
+                  @"Access cRIO Box under the floor in section A and check LED",   instructionMessageKey,
+                  @"cRIO Box LED", imageTitleKey,
+                  @"Expiration fallback: automatic", fallbackMessageKey,
+                  @"1316461169000", vehicleTimeSecondsKey,
+                  @"1316461172000", neededByTimeSecondsKey,
+                  @"Is LED on?", promptKey,
+                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",fallbackMessageKey,           
+                  
+                  nil];
+    img = [self fetchImageWithName:@"crio-box-led.jpg"];
+	instruction = [[ManualInstruction alloc] initWithDictionary:dictionary andImage:img];
     [instructionList addObject:instruction];
 
+    dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                  @"procedureIdentifier 63115 block9", instructionIDKey,
+                  @"Access 24VDC converter box under the floor in section A and check LED",   instructionMessageKey,
+                  @"24VDC Converter Box", imageTitleKey,
+                  @"Automatic Failover", fallbackMessageKey,
+                  @"1316461159000", vehicleTimeSecondsKey,
+                  @"1316461162000", neededByTimeSecondsKey,
+                  @"Is LED on?", promptKey,
+                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",fallbackMessageKey,
+                
+                  nil];
+    img = [self fetchImageWithName:@"24v-converter-box.jpg"];
+	instruction = [[ManualInstruction alloc] initWithDictionary:dictionary andImage:img];
+    [instructionList addObject:instruction];
+
+
+    //103
+    dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+          @"procedureIdentifier 63115 instr4", instructionIDKey,
+          @"Verify external spotlight D wall switch inside in section A is ON", instructionMessageKey,   
+          @"External Spotlight D Wall Switch",  imageTitleKey,
+                  @"Expiration fallback: automatic", fallbackMessageKey,
+                  @"1316461140000", vehicleTimeSecondsKey,
+                  @"1316461144000", neededByTimeSecondsKey,
+                  @"Is light on?", promptKey,
+                  @"Fallback is automatic",fallbackMessageKey,
+                  nil];
+    img = [self fetchImageWithName:@"external-spotlight-d.jpg"];
     
-    self.list = instructionList;
+	instruction = [[ManualInstruction alloc] initWithDictionary:dictionary andImage:img];
+    [instructionList addObject:instruction];
+    
+    
+    dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+                @"procedureIdentifier 63103 instr5", instructionIDKey,
+                  @"View spotlight through window in external DMM hatch door",   instructionMessageKey,
+                @"Spotlight through DMM hatch door", imageTitleKey,
+                  @"Expiration fallback: automatic", fallbackMessageKey,
+                  @"1316461149000", vehicleTimeSecondsKey,
+                  @"1316461152000", neededByTimeSecondsKey,
+                  @"Is DMM hatch door spotlight on?", promptKey,
+                  @"Fallback is automatic",fallbackMessageKey, 
+                  nil];
+    img = [self fetchImageWithName:@"view-spotlight.jpg"];
+	instruction = [[ManualInstruction alloc] initWithDictionary:dictionary andImage:img];
+    [instructionList addObject:instruction];
+    
+        
+    return instructionList;    
 }
+
+-(BOOL) canConnectToServer {
+    return NO;
+}
+
+-(void) asyncFetchImageWithName:(NSString *)imageNameWithExtension{
+    
+    // practice code
+    
+    // get the img file pathname from the bundle
+    NSString *imageName = nil;// todo remove ".png" from imageNameWithExtension
+    NSBundle* myBundle = [NSBundle mainBundle];
+    NSString* myImage = [myBundle pathForResource:imageName ofType:@"png"];
+    //??undelared ID for ns img
+    //NSImage* imageObj = [[NSImage alloc] initWithContentsOfFile:myImage]; 
+    
+    // get the img file from the user's doc domain
+    NSArray *paths =   NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *fileInUserDocdir = [documentsDirectory stringByAppendingPathComponent:imageName];
+    
+    // convert to url
+    // http://stackoverflow.com/questions/1514343/iphone-nsdata-from-local-files-url
+    // Given some file path URL: NSURL *pathURL
+    NSURL *pathURL = [[NSURL alloc]initFileURLWithPath:fileInUserDocdir];
+    NSAssert1(([pathURL isFileURL] == YES), @"Not a fileURL: %@",fileInUserDocdir);
+    NSString *convertedBack = [pathURL path];
+    NSAssert ((convertedBack = fileInUserDocdir),@"url conversion");
+   
+}
+  
+/* Get image, either demo image in bundle or setup asynch fetch by constructing its URL. 
+   input: filename 
+ */
+-(UIImage *)fetchImageWithName: (NSString *)imageName {
+    
+    if ([self canConnectToServer]) {
+        [self asyncFetchImageWithName:imageName];
+        return nil;
+    } else {
+        UIImage *img = [UIImage imageNamed:imageName];
+        // what is this
+        //[[UIImage alloc] initWithContentsOfFile:imageName];
+        return (img) ? img :  [UIImage imageNamed:@"200pxmissing.png"];
+    }
+}
+
 
 @end

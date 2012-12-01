@@ -10,12 +10,7 @@
 #import "DetailViewController.h"
 #import "DataController.h"
 #import "ManualInstruction.h"
-
-// _objects inserted on the fly is replaced w dataController
-//@interface MasterViewController () {
-//    NSMutableArray *_objects;
-//}
-//@end
+#import "ProjectConstants.h"
 
 @implementation MasterViewController
 
@@ -71,7 +66,8 @@
 
     // Get the object to display and set the value in the cell.
     ManualInstruction *manInstructionAtIndex = [dataController objectInListAtIndex:indexPath.row];
-    cell.textLabel.text = manInstructionAtIndex.instructionMessage;
+
+    cell.textLabel.text = [manInstructionAtIndex.dictionary objectForKey:instructionMessageKey];
     return cell;
 }
 

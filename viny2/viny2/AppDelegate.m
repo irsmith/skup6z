@@ -10,6 +10,11 @@
 #import "MasterViewController.h"
 #import "DataController.h"
 
+void onUncaughtException(NSException *exception)
+{
+    NSLog(@"uncaught exception: %@", exception);
+}
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) MasterViewController *masterViewController;
@@ -23,6 +28,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //http://wiki.sparrow-framework.org/tutorials/a_simple_way_to_let_xcode_stop_on_an_error
+    NSSetUncaughtExceptionHandler(&onUncaughtException);
+    
     // Override point for customization after application launch.
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;

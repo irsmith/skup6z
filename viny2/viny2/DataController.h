@@ -48,7 +48,9 @@
 
 @class ManualInstruction;
 
-@interface DataController : NSObject 
+@interface DataController : NSObject {
+   
+}
 
 - (unsigned)countOfList;
 - (ManualInstruction *)objectInListAtIndex:(unsigned)theIndex;

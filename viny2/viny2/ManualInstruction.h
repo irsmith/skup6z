@@ -42,22 +42,26 @@
  POSSIBILITY OF SUCH DAMAGE.
  
  Copyright (C) 2012 Apple Inc. All Rights Reserved.
- 
- "instructionIdentifier": "instr4",
- "instructionMessage":  "Verify external spotlight D wall switch inside in section A is ON",
- "imageReference":  "63103_files/external-spotlight-d.jpg",
- "imageTitle": "
- 
+
  */
 
 #import <Foundation/Foundation.h>
 
-@interface ManualInstruction : NSObject
+/* 
+ Json data comes as a dictionary array so I will use that for the data mode
+ oo avoid newing and copying into data model properties. This could be
+ an irrevelant perf change.  Anyway I wanted to learn dictionary s.
+ */
 
-@property (nonatomic, strong) NSString *instructionIdentifier;
-@property (nonatomic, strong) NSString *instructionMessage;
-@property (nonatomic, strong) NSString *imageReference;
-@property (nonatomic, retain) NSData * image;
-@property (nonatomic, strong) NSString *imageTitle;
+@interface ManualInstruction : NSObject {
 
+}
+
+@property (nonatomic, retain) UIImage * image;
+@property (nonatomic, retain) NSDictionary * dictionary;
+
+-(id)initWithDictionary:(NSDictionary *)dictionary;
+-(id)initWithDictionary:(NSDictionary *)dictionary andImage:(UIImage *)img;
+
+      
 @end

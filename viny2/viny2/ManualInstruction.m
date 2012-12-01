@@ -50,6 +50,33 @@
 
 @implementation ManualInstruction
 
-@synthesize instructionIdentifier, instructionMessage, imageReference, imageTitle;
+@synthesize image, dictionary;
+
+
+/* Funnel pattern from Duncan. */
+/* Returns a data object with only a dictionary */
+- (id)initWithDictionary:(NSDictionary *)dict{
+    return [self initWithDictionary:dict andImage:nil];
+}
+
+-(id)initWithDictionary:(NSDictionary *)dict andImage:(UIImage *)img {
+    self = [super init];
+    if (self != nil) {
+       
+        self.dictionary = dict;
+        self.image = img;
+    }   
+    return self;
+}
+
+/** 
+ Calculates and returns expiration time, which is the difference in between
+ vehicle and needed. 
+ */
+
+-(NSDate *)getExpirationTime {
+    //http://stackoverflow.com/questions/6655446/convert-epoch-time-to-nsdate-with-good-timezone-with-objective-c
+    return nil;
+}
 
 @end

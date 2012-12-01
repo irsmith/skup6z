@@ -8,7 +8,9 @@
 
 #import "DetailViewController.h"
 #import "ManualInstruction.h"
+#import "ProjectConstants.h"
 
+// what is the purpose of this?
 @interface DetailViewController ()
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
@@ -31,7 +33,6 @@
     }
     
     // Hide the split view's popover after user has selected an item from it.
-    // from BountyHunter... but doenst work...
     if (nil != self.masterPopoverController) {
         [self.masterPopoverController dismissPopoverAnimated:YES];
     }
@@ -43,9 +44,18 @@
     
     ManualInstruction *mi = self.manualInstruction;
     if (mi) {
-        self.instructionIdLabel.text = mi.instructionIdentifier;
-        self.instructionMessageLabel.text = mi.instructionMessage;
-        self.imageTitleLabel.text = mi.imageTitle;
+        self.instructionIdLabel.text = [mi.dictionary objectForKey:instructionIDKey];
+        self.instructionMessageLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
+        self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
+        self.imageView.image = mi.image;
+             
+        /* dot notation 
+         self.view = somethingElse.view;
+         is the same as
+         [self setView:[somethingElse view]];
+    
+         */
+        
     }
     
 }

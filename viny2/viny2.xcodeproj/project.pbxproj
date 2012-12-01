@@ -28,6 +28,13 @@
 		BB60A82F165FFCE7003402E5 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60A82B165FFCE7003402E5 /* DataController.m */; };
 		BB60A830165FFCE7003402E5 /* ManualInstruction.m in Sources */ = {isa = PBXBuildFile; fileRef = BB60A82D165FFCE7003402E5 /* ManualInstruction.m */; };
 		BB60A831165FFCE7003402E5 /* ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BB60A82E165FFCE7003402E5 /* ReadMe.rtf */; };
+		BBB55E30166A819E00C1BFAE /* 24v-converter-box.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E27166A819E00C1BFAE /* 24v-converter-box.jpg */; };
+		BBB55E31166A819E00C1BFAE /* 63103.json in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E28166A819E00C1BFAE /* 63103.json */; };
+		BBB55E32166A819E00C1BFAE /* 63115.json in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E29166A819E00C1BFAE /* 63115.json */; };
+		BBB55E33166A819E00C1BFAE /* external-spotlight-d.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E2A166A819E00C1BFAE /* external-spotlight-d.jpg */; };
+		BBB55E34166A819E00C1BFAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */; };
+		BBB55E35166A819E00C1BFAE /* ProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */; };
+		BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +78,15 @@
 		BB60A82C165FFCE7003402E5 /* ManualInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManualInstruction.h; sourceTree = "<group>"; };
 		BB60A82D165FFCE7003402E5 /* ManualInstruction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManualInstruction.m; sourceTree = "<group>"; };
 		BB60A82E165FFCE7003402E5 /* ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = ReadMe.rtf; sourceTree = "<group>"; };
+		BBB55E27166A819E00C1BFAE /* 24v-converter-box.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "24v-converter-box.jpg"; sourceTree = "<group>"; };
+		BBB55E28166A819E00C1BFAE /* 63103.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 63103.json; sourceTree = "<group>"; };
+		BBB55E29166A819E00C1BFAE /* 63115.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = 63115.json; sourceTree = "<group>"; };
+		BBB55E2A166A819E00C1BFAE /* external-spotlight-d.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "external-spotlight-d.jpg"; sourceTree = "<group>"; };
+		BBB55E2B166A819E00C1BFAE /* PhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoViewController.h; sourceTree = "<group>"; };
+		BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoViewController.m; sourceTree = "<group>"; };
+		BBB55E2D166A819E00C1BFAE /* ProjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectConstants.h; sourceTree = "<group>"; };
+		BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectConstants.m; sourceTree = "<group>"; };
+		BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "view-spotlight.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +146,15 @@
 		BB60A7EF165FF118003402E5 /* viny2 */ = {
 			isa = PBXGroup;
 			children = (
+				BBB55E27166A819E00C1BFAE /* 24v-converter-box.jpg */,
+				BBB55E28166A819E00C1BFAE /* 63103.json */,
+				BBB55E29166A819E00C1BFAE /* 63115.json */,
+				BBB55E2A166A819E00C1BFAE /* external-spotlight-d.jpg */,
+				BBB55E2B166A819E00C1BFAE /* PhotoViewController.h */,
+				BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */,
+				BBB55E2D166A819E00C1BFAE /* ProjectConstants.h */,
+				BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */,
+				BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */,
 				BB60A82A165FFCE7003402E5 /* DataController.h */,
 				BB60A82B165FFCE7003402E5 /* DataController.m */,
 				BB60A82C165FFCE7003402E5 /* ManualInstruction.h */,
@@ -259,6 +284,11 @@
 				BB60A803165FF119003402E5 /* MainStoryboard_iPhone.storyboard in Resources */,
 				BB60A806165FF119003402E5 /* MainStoryboard_iPad.storyboard in Resources */,
 				BB60A831165FFCE7003402E5 /* ReadMe.rtf in Resources */,
+				BBB55E30166A819E00C1BFAE /* 24v-converter-box.jpg in Resources */,
+				BBB55E31166A819E00C1BFAE /* 63103.json in Resources */,
+				BBB55E32166A819E00C1BFAE /* 63115.json in Resources */,
+				BBB55E33166A819E00C1BFAE /* external-spotlight-d.jpg in Resources */,
+				BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +329,8 @@
 				BB60A80C165FF119003402E5 /* DetailViewController.m in Sources */,
 				BB60A82F165FFCE7003402E5 /* DataController.m in Sources */,
 				BB60A830165FFCE7003402E5 /* ManualInstruction.m in Sources */,
+				BBB55E34166A819E00C1BFAE /* PhotoViewController.m in Sources */,
+				BBB55E35166A819E00C1BFAE /* ProjectConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
