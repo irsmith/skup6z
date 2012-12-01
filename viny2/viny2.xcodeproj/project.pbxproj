@@ -35,6 +35,7 @@
 		BBB55E34166A819E00C1BFAE /* PhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */; };
 		BBB55E35166A819E00C1BFAE /* ProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */; };
 		BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */; };
+		BBB55E40166A861300C1BFAE /* crio-box-led.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E3F166A861300C1BFAE /* crio-box-led.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		BBB55E2D166A819E00C1BFAE /* ProjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectConstants.h; sourceTree = "<group>"; };
 		BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectConstants.m; sourceTree = "<group>"; };
 		BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "view-spotlight.jpg"; sourceTree = "<group>"; };
+		BBB55E3F166A861300C1BFAE /* crio-box-led.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "crio-box-led.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,15 +148,11 @@
 		BB60A7EF165FF118003402E5 /* viny2 */ = {
 			isa = PBXGroup;
 			children = (
-				BBB55E27166A819E00C1BFAE /* 24v-converter-box.jpg */,
-				BBB55E28166A819E00C1BFAE /* 63103.json */,
-				BBB55E29166A819E00C1BFAE /* 63115.json */,
-				BBB55E2A166A819E00C1BFAE /* external-spotlight-d.jpg */,
+				BBB55E38166A855A00C1BFAE /* data */,
 				BBB55E2B166A819E00C1BFAE /* PhotoViewController.h */,
 				BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */,
 				BBB55E2D166A819E00C1BFAE /* ProjectConstants.h */,
 				BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */,
-				BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */,
 				BB60A82A165FFCE7003402E5 /* DataController.h */,
 				BB60A82B165FFCE7003402E5 /* DataController.m */,
 				BB60A82C165FFCE7003402E5 /* ManualInstruction.h */,
@@ -204,6 +202,35 @@
 				BB60A81C165FF119003402E5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBB55E38166A855A00C1BFAE /* data */ = {
+			isa = PBXGroup;
+			children = (
+				BBB55E3A166A857300C1BFAE /* 63115 */,
+				BBB55E39166A856900C1BFAE /* 63103 */,
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+		BBB55E39166A856900C1BFAE /* 63103 */ = {
+			isa = PBXGroup;
+			children = (
+				BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */,
+				BBB55E2A166A819E00C1BFAE /* external-spotlight-d.jpg */,
+				BBB55E28166A819E00C1BFAE /* 63103.json */,
+			);
+			name = 63103;
+			sourceTree = "<group>";
+		};
+		BBB55E3A166A857300C1BFAE /* 63115 */ = {
+			isa = PBXGroup;
+			children = (
+				BBB55E3F166A861300C1BFAE /* crio-box-led.jpg */,
+				BBB55E27166A819E00C1BFAE /* 24v-converter-box.jpg */,
+				BBB55E29166A819E00C1BFAE /* 63115.json */,
+			);
+			name = 63115;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +316,7 @@
 				BBB55E32166A819E00C1BFAE /* 63115.json in Resources */,
 				BBB55E33166A819E00C1BFAE /* external-spotlight-d.jpg in Resources */,
 				BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */,
+				BBB55E40166A861300C1BFAE /* crio-box-led.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
