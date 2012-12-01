@@ -1,0 +1,282 @@
+{"prl:Procedure": {
+    "xmlns:prl": "http://www.er2.jsc.nasa.gov/prl",
+    "procedureIdentifier": 63103,
+    "prl:MetaData": {
+        "prl:Version": 1,
+        "prl:SchemaVersion": "4.0.0",
+        "prl:Date": "2012-08-15T15:24:45-05:00",
+        "prl:AuthoringTool": "PrIDE 0.9.112410",
+        "prl:Frequency": "as required",
+        "prl:Book": "ISS Med"
+    },
+    "prl:ExitModes": {"prl:ExitMode": [
+        {
+            "exitModeIdentifier": "exitSuccess",
+            "prl:Result": 1,
+            "prl:Message": {"prl:Text": "Success"}
+        },
+        {
+            "exitModeIdentifier": "exitFailure",
+            "prl:Result": 0,
+            "prl:Message": {"prl:Text": "Failure"}
+        }
+    ]},
+    "prl:ProcedureTitle": {
+        "prl:ProcedureNumber": 8.01,
+        "prl:Text": "28VDC MANUAL POWER SWITCHOVER TO SECONDARY LINE (EPS-PDU-SECONDARY-MANUAL-ACTIVATION)"
+    },
+    "prl:ItemizedList": [
+        {
+            "infoIdentifier": "info1",
+            "prl:ListTitle": {"prl:Text": "LOCATION"},
+            "prl:Paragraph": {"prl:Text": "DSH Core"}
+        },
+        {
+            "infoIdentifier": "info2",
+            "prl:ListTitle": {"prl:Text": "PERSONNEL"},
+            "prl:Paragraph": {"prl:Text": "One crew member"}
+        },
+        {
+            "infoIdentifier": "info3",
+            "prl:ListTitle": {"prl:Text": "DURATION"},
+            "prl:Paragraph": {"prl:Text": "15 minutes"}
+        },
+        {
+            "infoIdentifier": "info4",
+            "prl:ListTitle": {"prl:Text": "SPECIAL EQUIPMENT"},
+            "prl:Paragraph": [
+                {"prl:Text": "Crew Display application (any available: iPAD, laptop, Geolab computers, TRWS computer)"},
+                {"prl:Text": "WebPD application (any available: iPAD, laptop, Geolab computers, TRWS computer)"}
+            ]
+        }
+    ],
+    "prl:Step": {
+        "stepIdentifier": "step1",
+        "prl:StepTitle": {
+            "prl:StepNumber": 1,
+            "prl:Text": "OPERATIONAL STEPS"
+        },
+        "prl:ClarifyingInfo": {
+            "infoIdentifier": "info12",
+            "infoType": "caution",
+            "prl:InfoText": {"prl:Paragraph": {"prl:Text": "Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations."}}
+        },
+        "prl:SubStep": [
+            {
+                "blockIdentifier": "block1",
+                "prl:Title": {
+                    "prl:StepNumber": 1.1,
+                    "prl:Text": "VERIFY DIAGNOSIS"
+                },
+                "prl:SubStep": {
+                    "blockIdentifier": "block2",
+                    "prl:Title": {
+                        "prl:StepNumber": "1.1.1",
+                        "prl:Text": "Verify external spotlight on section D power is OFF"
+                    },
+                    "prl:ManualInstruction": [
+                        {
+                            "executionMode": "human",
+                            "instructionIdentifier": "instr4",
+                            "prl:Description": {"prl:Text": "Manual"},
+                            "prl:InstructionMessage": {"prl:Text": "Verify external spotlight D wall switch inside in section A is ON"}
+                        },
+                        {
+                            "executionMode": "human",
+                            "instructionIdentifier": "instr5",
+                            "prl:Description": {"prl:Text": "Manual"},
+                            "prl:InstructionMessage": {"prl:Text": "View spotlight through window in external DMM hatch door"}
+                        },
+                        {
+                            "executionMode": "human",
+                            "instructionIdentifier": "instr6",
+                            "prl:Description": {"prl:Text": "Manual"},
+                            "prl:InstructionMessage": {"prl:Text": "If spotlight is ON then check MCC"}
+                        },
+                        {
+                            "executionMode": "human",
+                            "instructionIdentifier": "instr7",
+                            "prl:Description": {"prl:Text": "Manual"},
+                            "prl:InstructionMessage": {"prl:Text": "If spotlight is OFF then proceed"}
+                        }
+                    ],
+                    "prl:Image": [
+                        {
+                            "infoIdentifier": "info5",
+                            "prl:ImageReference": {"source": "63103_files/external-spotlight-d.jpg"},
+                            "prl:ImageTitle": {
+                                "prl:ImageNumber": 1,
+                                "prl:Text": "External Spotlight D Wall Switch"
+                            }
+                        },
+                        {
+                            "infoIdentifier": "info6",
+                            "prl:ImageReference": {"source": "63103_files/view-spotlight.jpg"},
+                            "prl:ImageTitle": {
+                                "prl:ImageNumber": 2,
+                                "prl:Text": "Spotlight through DMM hatch door"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "blockIdentifier": "block3",
+                "prl:Title": {
+                    "prl:StepNumber": 1.2,
+                    "prl:Text": "RECOVER FROM FAILURE"
+                },
+                "prl:ManualInstruction": [
+                    {
+                        "executionMode": "human",
+                        "instructionIdentifier": "instr8",
+                        "prl:Description": {"prl:Text": "Manual"},
+                        "prl:InstructionMessage": {"prl:Text": "Via Power Tab on Crew Display command power OFF on port P2 of bank 2 on PDU__1B_1"}
+                    },
+                    {
+                        "executionMode": "human",
+                        "instructionIdentifier": "instr10",
+                        "prl:Description": {"prl:Text": "Manual"},
+                        "prl:InstructionMessage": {"prl:Text": "Via Power Tab on Crew Display verify power OFF on port P6 of bank 2 on PDU__1B_1"}
+                    },
+                    {
+                        "executionMode": "human",
+                        "instructionIdentifier": "instr12",
+                        "prl:Description": {"prl:Text": "Manual"},
+                        "prl:InstructionMessage": {"prl:Text": "Via Power Tab on Crew Display command power OFF on port P3 of bank 1 on PDU__1B_1"}
+                    },
+                    {
+                        "executionMode": "human",
+                        "instructionIdentifier": "instr14",
+                        "prl:Description": {"prl:Text": "Manual"},
+                        "prl:InstructionMessage": {"prl:Text": "Via Power Tab on Crew Display command power ON on port P6 of bank 2 on PDU__1B_1"}
+                    }
+                ]
+            },
+            {
+                "blockIdentifier": "block4",
+                "prl:Title": {
+                    "prl:StepNumber": 1.3,
+                    "prl:Text": "VERIFY RECOVERED OPERATIONAL FUNCTIONS"
+                },
+                "prl:SubStep": [
+                    {
+                        "blockIdentifier": "block5",
+                        "prl:Title": {
+                            "prl:StepNumber": "1.3.1",
+                            "prl:Text": "Via TCS/ECLSS screen on crew display check reading of DMM CO2 sensor"
+                        },
+                        "prl:ManualInstruction": [
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr15",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If reading is GREATER THAN 5000 ppm or LESS THAN 200 ppm then check MCC"}
+                            },
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr16",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If reading is LESS THAN OR EQUAL TO 5000 ppm and GREATER THAN OR EQUAL TO 200 ppm then proceed"}
+                            }
+                        ]
+                    },
+                    {
+                        "blockIdentifier": "block8",
+                        "prl:Title": {
+                            "prl:StepNumber": "1.3.2",
+                            "prl:Text": "Verify external spotlight on section D power is ON"
+                        },
+                        "prl:ManualInstruction": [
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr21",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "Verify external spotlight D wall switch inside in section A is ON"}
+                            },
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr22",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "View spotlight through window in external DMM hatch door"}
+                            },
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr23",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If spotlight is OFF then check MCC"}
+                            },
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr24",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If spotlight is ON then proceed"}
+                            }
+                        ],
+                        "prl:Image": [
+                            {
+                                "infoIdentifier": "info9",
+                                "prl:ImageReference": {"source": "63103_files/external-spotlight-d.jpg"},
+                                "prl:ImageTitle": {
+                                    "prl:ImageNumber": 3,
+                                    "prl:Text": "External Spotlight D Wall Switch"
+                                }
+                            },
+                            {
+                                "infoIdentifier": "info10",
+                                "prl:ImageReference": {"source": "63103_files/view-spotlight.jpg"},
+                                "prl:ImageTitle": {
+                                    "prl:ImageNumber": 4,
+                                    "prl:Text": "Spotlight through DMM hatch door"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "blockIdentifier": "block6",
+                        "prl:Title": {
+                            "prl:StepNumber": "1.3.3",
+                            "prl:Text": "Check the LED on at least two Wireless Sensor Nodes"
+                        },
+                        "prl:ClarifyingInfo": {
+                            "infoIdentifier": "info11",
+                            "infoType": "note",
+                            "prl:InfoText": {"prl:Paragraph": {"prl:Text": "Although power to the wireless sensor nodes will come back online quickly, the nodes may take up to 20 minutes to join the wireless network and produce reliable sensor values as seen on the crew display"}}
+                        },
+                        "prl:ManualInstruction": [
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr25",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If OFF then check MCC"}
+                            },
+                            {
+                                "executionMode": "human",
+                                "instructionIdentifier": "instr26",
+                                "prl:Description": {"prl:Text": "Manual"},
+                                "prl:InstructionMessage": {"prl:Text": "If ON then proceed"}
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "blockIdentifier": "block9",
+                "prl:Title": {
+                    "prl:StepNumber": 1.4,
+                    "prl:Text": "Turn Off External Spotlight if necessary"
+                },
+                "prl:ManualInstruction": {
+                    "executionMode": "human",
+                    "instructionIdentifier": "instr27",
+                    "prl:Description": {"prl:Text": "Manual"},
+                    "prl:InstructionMessage": {"prl:Text": "Return external spotlight D wall switch inside in section A to setting found at beginning of procedure"}
+                }
+            }
+        ],
+        "prl:ExitProcedure": {
+            "exitModeReference": "exitSuccess",
+            "instructionIdentifier": "instr2"
+        }
+    }
+}}
