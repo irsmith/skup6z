@@ -31,5 +31,6 @@ extern NSString *const fallbackMessageKey;
 extern NSString *const promptKey;
 extern NSString *const neededByTimeSecondsKey; // difference b/w neededBy and vehicle is expiration time
 extern NSString *const vehicleTimeSecondsKey;    // = @"1316461149000";
-extern NSString *const completionStatusKey;    // return code
+extern NSString *const completionStatusKey;      // return code
+
 @end

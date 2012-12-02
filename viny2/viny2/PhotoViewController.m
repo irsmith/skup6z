@@ -32,6 +32,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    ManualInstruction *mi = self.manualInstruction;
+    if (mi) {
+        self.imageView.image = mi.image;      
+    }
 }
 
 /* Set image from the data model. */

@@ -19,4 +19,9 @@
 
 @property (nonatomic, strong) DataController *dataController;
 
+/* Saves the selected index path on the table view.
+ The index path of the table view will be reset to nil,
+ everytime the popover is hidden and shown.*/
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
 @end

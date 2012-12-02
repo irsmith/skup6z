@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "ManualInstruction.h"
 #import "ProjectConstants.h"
+#import "PhotoViewController.h"
 
 // what is the purpose of this?
 @interface DetailViewController ()
@@ -48,7 +49,7 @@
         self.instructionMessageLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
         self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
         self.imageView.image = mi.image;
-             
+                    
         /* dot notation 
          self.view = somethingElse.view;
          is the same as
@@ -89,6 +90,27 @@
     // Called when the view is shown again in the split view, invalidating the button and popover controller.
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
+}
+
+#pragma mark -
+#pragma mark Button Action
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showPhoto"]) {
+        PhotoViewController *vc = [segue destinationViewController];
+
+        NSAssert(
+                 ([vc isKindOfClass:PhotoViewController.class] == YES),@"vc is not photo");
+        
+        NSAssert(
+                 (vc.imageView != nil),@"photo vc's UIImage was not instantiated by storyboard.");
+        
+
+
+        vc.imageView.image = self.manualInstruction.image;
+        
+    }
+    
 }
 
 @end

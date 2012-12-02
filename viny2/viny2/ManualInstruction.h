@@ -62,6 +62,7 @@
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 -(id)initWithDictionary:(NSDictionary *)dictionary andImage:(UIImage *)img;
++(NSString *)getExpirationWithStart:(NSString *)vehicleTime andEnd:(NSString *)neededBy ;
 
-      
+
 @end

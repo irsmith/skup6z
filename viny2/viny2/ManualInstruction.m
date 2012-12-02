@@ -74,9 +74,12 @@
  vehicle and needed. 
  */
 
--(NSDate *)getExpirationTime {
++(NSString *)getExpirationWithStart:(NSString *)vehicleTime andEnd:(NSString *)neededBy {
     //http://stackoverflow.com/questions/6655446/convert-epoch-time-to-nsdate-with-good-timezone-with-objective-c
-    return nil;
+    
+     return @"Needed by 2010-05-03 00:00:00 +0200";
 }
+
+
 
 @end

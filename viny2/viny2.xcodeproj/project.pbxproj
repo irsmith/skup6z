@@ -148,6 +148,7 @@
 		BB60A7EF165FF118003402E5 /* viny2 */ = {
 			isa = PBXGroup;
 			children = (
+				BBF24722166ADD640090BAA8 /* dataModel */,
 				BBB55E38166A855A00C1BFAE /* data */,
 				BBB55E2B166A819E00C1BFAE /* PhotoViewController.h */,
 				BBB55E2C166A819E00C1BFAE /* PhotoViewController.m */,
@@ -155,8 +156,6 @@
 				BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */,
 				BB60A82A165FFCE7003402E5 /* DataController.h */,
 				BB60A82B165FFCE7003402E5 /* DataController.m */,
-				BB60A82C165FFCE7003402E5 /* ManualInstruction.h */,
-				BB60A82D165FFCE7003402E5 /* ManualInstruction.m */,
 				BB60A82E165FFCE7003402E5 /* ReadMe.rtf */,
 				BB60A7F8165FF118003402E5 /* AppDelegate.h */,
 				BB60A7F9165FF118003402E5 /* AppDelegate.m */,
@@ -231,6 +230,15 @@
 				BBB55E29166A819E00C1BFAE /* 63115.json */,
 			);
 			name = 63115;
+			sourceTree = "<group>";
+		};
+		BBF24722166ADD640090BAA8 /* dataModel */ = {
+			isa = PBXGroup;
+			children = (
+				BB60A82D165FFCE7003402E5 /* ManualInstruction.m */,
+				BB60A82C165FFCE7003402E5 /* ManualInstruction.h */,
+			);
+			name = dataModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

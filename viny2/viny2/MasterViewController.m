@@ -15,6 +15,7 @@
 @implementation MasterViewController
 
 @synthesize dataController;
+@synthesize selectedIndexPath = _selectedIndexPath;
 
 #pragma mark -
 #pragma mark - View Lifecycle
@@ -33,10 +34,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Select the first item by default. Otherwise, there will
+    // be no data selected and detail view will show nothing.
+    self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    self.detailViewController.manualInstruction = [self.dataController objectInListAtIndex:self.selectedIndexPath.row]; // or simply, zero
+}
+
+/* Release any strong references here. */
+- (void)viewDidUnload
+{
+    self.selectedIndexPath = nil;
+    [super viewDidUnload];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Highlight the previously selected data item.
+    [self.tableView selectRowAtIndexPath:self.selectedIndexPath
+                                animated:YES
+                          scrollPosition:UITableViewScrollPositionMiddle];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,14 +84,18 @@
     return [dataController countOfList];
 }
 
+/* Emit a tabel cell. */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
     // Get the object to display and set the value in the cell.
-    ManualInstruction *manInstructionAtIndex = [dataController objectInListAtIndex:indexPath.row];
+    ManualInstruction *mi = [dataController objectInListAtIndex:indexPath.row];
 
-    cell.textLabel.text = [manInstructionAtIndex.dictionary objectForKey:instructionMessageKey];
+    cell.textLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
+    NSString *start = [mi.dictionary objectForKey:vehicleTimeSecondsKey];
+    NSString *end = [mi.dictionary objectForKey:neededByTimeSecondsKey];
+    cell.detailTextLabel.text = [ManualInstruction getExpirationWithStart:start andEnd:end];
     return cell;
 }
 
@@ -83,6 +111,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedIndexPath = indexPath;
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
         ManualInstruction *mi = [dataController objectInListAtIndex:selectedRowIndex.row];
@@ -101,6 +131,11 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
          NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
          DetailViewController *detailViewController = [segue destinationViewController];
+        
+        
+        NSAssert(([detailViewController isKindOfClass:DetailViewController.class] == YES),@"vc is not right class");
+        
+
          detailViewController.manualInstruction = [dataController objectInListAtIndex:selectedRowIndex.row];
      }
         

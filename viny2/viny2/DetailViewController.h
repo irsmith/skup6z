@@ -22,6 +22,7 @@
 @property (nonatomic, weak) IBOutlet UILabel *instructionMessageLabel;
 @property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *prompt;
 
 
 @end
