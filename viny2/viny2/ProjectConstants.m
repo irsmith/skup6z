@@ -15,6 +15,7 @@
  NSString *const imageReferenceKey = @"imgRef";
  NSString *const imageTitleKey = @"imgTitle";
 
+ NSString *const clarifyingInfoKey = @"clarifyingInfo";
  NSString *const fallbackMessageKey = @"fallback";
  NSString *const promptKey = @"prompt";
  NSString *const neededByTimeSecondsKey = @"neededBy";

@@ -23,13 +23,15 @@ http://stackoverflow.com/questions/538996/constants-in-objective-c
 
 
 extern NSString *const instructionIDKey;
-extern NSString *const instructionMessageKey; // why not init? = @"instructionMessageKey";
+extern NSString *const instructionMessageKey;
 extern NSString *const imageReferenceKey; // image URL
 extern NSString *const imageTitleKey;
 
+// why ? extern variable has an initializer
+extern NSString *const clarifyingInfoKey;
 extern NSString *const fallbackMessageKey;
 extern NSString *const promptKey;
-extern NSString *const neededByTimeSecondsKey; // difference b/w neededBy and vehicle is expiration time
+extern NSString *const neededByTimeSecondsKey;
 extern NSString *const vehicleTimeSecondsKey;    // = @"1316461149000";
 extern NSString *const completionStatusKey;      // return code
 

@@ -11,10 +11,17 @@
 #import "ProjectConstants.h"
 #import "PhotoViewController.h"
 
-// what is the purpose of this?
+// what is the purpose of this? in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
+
 @interface DetailViewController ()
+
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
+- (IBAction)changeGreeting:(id)sender;
+- (IBAction)ofOffSwith:(id)sender;
+@property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
+
+
 @end
 
 @implementation DetailViewController
@@ -44,11 +51,16 @@
 {
     
     ManualInstruction *mi = self.manualInstruction;
+    NSAssert( (mi != nil),@"detailV configureView: no data");
     if (mi) {
         self.instructionIdLabel.text = [mi.dictionary objectForKey:instructionIDKey];
         self.instructionMessageLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
         self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
         self.imageView.image = mi.image;
+        self.prompt.text = [mi.dictionary objectForKey:promptKey];
+        self.fallbackMessage = [mi.dictionary objectForKey:fallbackMessageKey];
+        self.clarifyingInfo = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
+        : @"--";
                     
         /* dot notation 
          self.view = somethingElse.view;
@@ -61,6 +73,15 @@
     
 }
 
+- (IBAction)changeGreeting:(id)sender {
+    NSLog(@"change greeting");
+}
+
+- (IBAction)ofOffSwith:(id)sender {
+    NSLog(@"switch ==");
+
+}
+
 #pragma mark - View Lifecycle
 
 - (void)viewDidLoad
@@ -68,6 +89,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
+    self.imageView.clipsToBounds = YES; //clip contained photos
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,6 +113,23 @@
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
 }
+
+#pragma mark -
+#pragma mark Table view selection
+
+-(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"toPhoto" sender:self];
+}
+
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    //? how to make segue to photo
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        NSIndexPath *selectedRowIndex = nil;//[self.tableView indexPathForSelectedRow];
+//       
+//    }
+//}
 
 #pragma mark -
 #pragma mark Button Action

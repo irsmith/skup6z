@@ -10,7 +10,7 @@
 
 @class ManualInstruction;
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UITableViewController <UISplitViewControllerDelegate>
 
 // Strong ref to our detail item.
 // Weak ref to the GUI elements.
@@ -23,6 +23,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UILabel *prompt;
+//countdownExpirationExplanation in countdown area
+@property (nonatomic, weak) IBOutlet UILabel *fallbackMessage;
+@property (nonatomic, weak) IBOutlet UILabel *clarifyingInfo;
 
 
 @end

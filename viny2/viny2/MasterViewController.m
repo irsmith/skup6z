@@ -38,9 +38,6 @@
     // be no data selected and detail view will show nothing.
     self.selectedIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     
-	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.detailViewController.manualInstruction = [self.dataController objectInListAtIndex:self.selectedIndexPath.row]; // or simply, zero
@@ -128,12 +125,12 @@
      Set the detail view controller's detail item to the item associated with the selected row.
      */
     
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
+    if ([[segue identifier] isEqualToString:@"pushStaticTable"]) {
          NSIndexPath *selectedRowIndex = [self.tableView indexPathForSelectedRow];
          DetailViewController *detailViewController = [segue destinationViewController];
         
         
-        NSAssert(([detailViewController isKindOfClass:DetailViewController.class] == YES),@"vc is not right class");
+         NSAssert(([detailViewController isKindOfClass:DetailViewController.class] == YES),@"vc is not right class");
         
 
          detailViewController.manualInstruction = [dataController objectInListAtIndex:selectedRowIndex.row];

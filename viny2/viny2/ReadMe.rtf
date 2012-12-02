@@ -11,9 +11,9 @@
 \b0 \cf0 \
 The app is essentially a todo list communicating w a server that\
 dispatches manual instructions to the crew such as 'inspect an\
-LED', 'flip a switch' and 'read a sensor value'. Because this app\
-duplicates part of an existing webapp which runs on an ipad\
-browser, the goal is to show how iOS-native capabilities such as\
+LED', 'flip a switch' and 'read a sensor value'. This app implements\
+a subset of existing webapp which runs on an ipad\
+browser. The goal is to show how iOS-native capabilities such as\
 touch and sound can be used improve crew responsiveness and\
 situational awareness.\
 \
@@ -27,48 +27,39 @@ examines the vehicle component, typically specified by photo.  Most\
 but not all inspections return YES/NO and typical expiration\
 times are large, eg 30m.\
 \
+release\
+- remove edit from master Nav bar \
+\
 \
 
 \b Working on now :\
 
-\b0 - hookup UIOutlets, prompt (cannot see the storyboard handle)\
+\b0 \
+- refactor vc for ipad, too\
+- impl action for Done button\
+- bug: hookup expiration explanation in countdown\
+- bug: cannot hookup fallback in top desc area\
 \
-- in iphone scene, add segue to photo (bug)\
-\
-- ipad Layout, \
-    ? how to fix the subview auto constraints for ipad\
+Note what went wrong when I didnt use the static table\
+- hookup UIOutlets, prompt (cannot see the storyboard handle)\
+constraints runtime error\
+- could not add segue\
 \
 \
 
 \b Short list (ranked)\
 
 \b0 \
-- revert to real background color, need to learn constraints\
-\
-- Photos should scale with aspect ratio. \
- Perhaps UIImageView is the wrong container?\
-Could use advise.\
-\
-\
-- Master prototype cell: increase height, add Done check state, add subtitle\
-\
-- add all actions: \
-   Master list check,  Done ,  Prompt Switch\
+- impl action for  Prompt Switch\
 \
 - Implement task's expiration  count down .\
-Would like sample code for epoch time (in java this is long which is formatted\
-   into to date)\
-Need sample code and sound file. \
   \
 -  impl real manInst.getExpirationByStartAndEnd (convert string to int, substract, then convert back... then format it as a string)\
-\
 \
 - If the task expires, app notifies the user with audible / visual\
 warning and withdraws the task.\
 \
 - make UI more visually attractive \
-    - eg how to put rounded corder border around the contained views?\
-Could use advise.\
 \
 - Master list is sorted by "needed By" time. \
 \

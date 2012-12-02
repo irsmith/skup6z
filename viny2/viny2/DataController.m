@@ -104,7 +104,7 @@
                   @"1316461169000", vehicleTimeSecondsKey,
                   @"1316461172000", neededByTimeSecondsKey,
                   @"Is LED on?", promptKey,
-                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",fallbackMessageKey,           
+                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",clarifyingInfoKey,
                   
                   nil];
     img = [self fetchImageWithName:@"crio-box-led.jpg"];
@@ -115,11 +115,11 @@
                   @"procedureIdentifier 63115 block9", instructionIDKey,
                   @"Access 24VDC converter box under the floor in section A and check LED",   instructionMessageKey,
                   @"24VDC Converter Box", imageTitleKey,
-                  @"Automatic Failover", fallbackMessageKey,
+                  @"Upon expiration will perform automatic failover", fallbackMessageKey,
                   @"1316461159000", vehicleTimeSecondsKey,
                   @"1316461162000", neededByTimeSecondsKey,
                   @"Is LED on?", promptKey,
-                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",fallbackMessageKey,
+                  @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",clarifyingInfoKey,
                 
                   nil];
     img = [self fetchImageWithName:@"24v-converter-box.jpg"];
@@ -136,7 +136,6 @@
                   @"1316461140000", vehicleTimeSecondsKey,
                   @"1316461144000", neededByTimeSecondsKey,
                   @"Is light on?", promptKey,
-                  @"Fallback is automatic",fallbackMessageKey,
                   nil];
     img = [self fetchImageWithName:@"external-spotlight-d.jpg"];
     
@@ -152,7 +151,6 @@
                   @"1316461149000", vehicleTimeSecondsKey,
                   @"1316461152000", neededByTimeSecondsKey,
                   @"Is DMM hatch door spotlight on?", promptKey,
-                  @"Fallback is automatic",fallbackMessageKey, 
                   nil];
     img = [self fetchImageWithName:@"view-spotlight.jpg"];
 	instruction = [[ManualInstruction alloc] initWithDictionary:dictionary andImage:img];

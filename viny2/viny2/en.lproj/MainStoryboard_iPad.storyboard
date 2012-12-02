@@ -54,6 +54,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.57215497650000002" blue="0.90137558480000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="96" type="user" id="8Q3-lg-tCg"/>
                                     <constraint firstItem="PX0-s9-RGi" firstAttribute="top" secondItem="EmB-Lo-jbV" secondAttribute="top" constant="13" id="AUg-c0-g1v"/>
                                     <constraint firstItem="G5d-cc-Jue" firstAttribute="centerY" secondItem="PX0-s9-RGi" secondAttribute="centerY" type="default" id="SCN-Zk-YsO"/>
                                     <constraint firstAttribute="trailing" secondItem="eH1-GA-fop" secondAttribute="trailing" constant="39" id="TyT-AW-k9g"/>
@@ -86,8 +87,8 @@
                                     <constraint firstItem="3i7-I3-c9I" firstAttribute="top" secondItem="N7O-6j-uft" secondAttribute="top" constant="13" id="CIZ-gj-JlS"/>
                                     <constraint firstItem="3i7-I3-c9I" firstAttribute="leading" secondItem="N7O-6j-uft" secondAttribute="leading" constant="28" id="bHs-vO-05a"/>
                                     <constraint firstItem="Lc9-Sz-jdE" firstAttribute="leading" secondItem="3i7-I3-c9I" secondAttribute="leading" type="default" id="dY3-bA-dzL"/>
-                                    <constraint firstItem="Lc9-Sz-jdE" firstAttribute="top" secondItem="3i7-I3-c9I" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="jSX-yZ-STh"/>
                                     <constraint firstItem="Lc9-Sz-jdE" firstAttribute="trailing" secondItem="3i7-I3-c9I" secondAttribute="trailing" type="default" id="l42-DU-44c"/>
+                                    <constraint firstItem="Lc9-Sz-jdE" firstAttribute="top" secondItem="N7O-6j-uft" secondAttribute="top" constant="57" id="wOr-Eb-hFO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1c-8n-Niz">
@@ -164,7 +165,6 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="z9r-fF-ieW">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="600" id="Gyd-FL-6t9"/>
                                             <constraint firstAttribute="width" constant="600" id="eeV-iy-sJj"/>
                                         </constraints>
                                     </imageView>
@@ -180,10 +180,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.1791283847" green="0.83370588960000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="280" type="user" id="Gzx-52-bSy"/>
                                     <constraint firstItem="z9r-fF-ieW" firstAttribute="top" secondItem="Lzy-gO-vWI" secondAttribute="top" type="default" id="IN4-6H-UQR"/>
                                     <constraint firstItem="cza-MW-mxv" firstAttribute="leading" secondItem="Lzy-gO-vWI" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MxB-Hg-D1G"/>
                                     <constraint firstItem="z9r-fF-ieW" firstAttribute="leading" secondItem="Lzy-gO-vWI" secondAttribute="leading" constant="7" id="YEa-JS-5Q9"/>
                                     <constraint firstItem="cza-MW-mxv" firstAttribute="bottom" secondItem="Lzy-gO-vWI" secondAttribute="bottom" type="default" id="jEI-oc-LFc"/>
+                                    <constraint firstItem="z9r-fF-ieW" firstAttribute="bottom" secondItem="Lzy-gO-vWI" secondAttribute="bottom" type="default" id="tw0-sf-AaJ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -191,20 +193,20 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EmB-Lo-jbV" secondAttribute="trailing" constant="13" id="43t-eJ-6cK"/>
                             <constraint firstItem="N7O-6j-uft" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="9" id="5ZX-XL-Nmn"/>
-                            <constraint firstItem="EmB-Lo-jbV" firstAttribute="top" secondItem="26" secondAttribute="top" constant="602" id="8qf-Eg-Byp"/>
-                            <constraint firstItem="Lzy-gO-vWI" firstAttribute="top" secondItem="26" secondAttribute="top" constant="279" id="AHD-5y-dcn"/>
+                            <constraint firstItem="EmB-Lo-jbV" firstAttribute="top" secondItem="26" secondAttribute="top" constant="602" type="user" id="8qf-Eg-Byp"/>
+                            <constraint firstItem="Lzy-gO-vWI" firstAttribute="top" secondItem="26" secondAttribute="top" constant="279" type="user" id="AHD-5y-dcn"/>
                             <constraint firstItem="N7O-6j-uft" firstAttribute="top" secondItem="26" secondAttribute="top" constant="8" id="E6m-Jr-Jum"/>
                             <constraint firstItem="Lzy-gO-vWI" firstAttribute="top" secondItem="k1c-8n-Niz" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GUL-oe-FtH"/>
                             <constraint firstItem="k1c-8n-Niz" firstAttribute="trailing" secondItem="Lzy-gO-vWI" secondAttribute="trailing" type="default" id="HTC-2O-oOJ"/>
                             <constraint firstItem="EmB-Lo-jbV" firstAttribute="leading" secondItem="26" secondAttribute="leading" type="default" id="Iy2-5j-tpl"/>
                             <constraint firstItem="k1c-8n-Niz" firstAttribute="top" secondItem="26" secondAttribute="top" constant="160" id="Yhi-EG-dWE"/>
                             <constraint firstItem="Lzy-gO-vWI" firstAttribute="centerX" secondItem="N7O-6j-uft" secondAttribute="centerX" type="default" id="dds-uE-ERC"/>
-                            <constraint firstAttribute="bottom" secondItem="EmB-Lo-jbV" secondAttribute="bottom" constant="6" id="drC-aV-8kq"/>
+                            <constraint firstAttribute="bottom" secondItem="EmB-Lo-jbV" secondAttribute="bottom" constant="6" type="user" id="drC-aV-8kq"/>
                             <constraint firstItem="Lzy-gO-vWI" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="13" id="j2H-Va-oMO"/>
                             <constraint firstAttribute="trailing" secondItem="N7O-6j-uft" secondAttribute="trailing" constant="2" id="nrS-jZ-cVG"/>
                             <constraint firstItem="k1c-8n-Niz" firstAttribute="leading" secondItem="26" secondAttribute="leading" constant="7" id="rMw-4s-fRc"/>
                             <constraint firstItem="k1c-8n-Niz" firstAttribute="top" secondItem="N7O-6j-uft" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sN0-ZJ-A3x"/>
-                            <constraint firstAttribute="bottom" secondItem="Lzy-gO-vWI" secondAttribute="bottom" constant="145" id="tTt-jH-BDS"/>
+                            <constraint firstAttribute="bottom" secondItem="Lzy-gO-vWI" secondAttribute="bottom" constant="145" type="user" id="tTt-jH-BDS"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -219,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="15" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1350" y="-100"/>
+            <point key="canvasLocation" x="1302" y="-132"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="18">
