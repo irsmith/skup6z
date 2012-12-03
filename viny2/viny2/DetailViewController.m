@@ -58,10 +58,11 @@
         self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
         self.imageView.image = mi.image;
         self.prompt.text = [mi.dictionary objectForKey:promptKey];
-        self.fallbackMessage = [mi.dictionary objectForKey:fallbackMessageKey];
-        self.clarifyingInfo = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
+        self.fallbackMessage.text = [mi.dictionary objectForKey:fallbackMessageKey];
+        self.clarifyingInfo.text = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
         : @"--";
-                    
+        
+
         /* dot notation 
          self.view = somethingElse.view;
          is the same as
@@ -119,17 +120,20 @@
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
+   
+       
+    //get ref to photo vc
+        //get segue w id...
+    PhotoViewController *vc = nil;
+  
+    NSAssert(
+             ([vc isKindOfClass:PhotoViewController.class] == YES),@"vc is not photo");
+
+    vc.imageView.image = self.manualInstruction.image;
+
     [self performSegueWithIdentifier:@"toPhoto" sender:self];
 }
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //? how to make segue to photo
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        NSIndexPath *selectedRowIndex = nil;//[self.tableView indexPathForSelectedRow];
-//       
-//    }
-//}
 
 #pragma mark -
 #pragma mark Button Action
