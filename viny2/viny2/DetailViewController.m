@@ -163,38 +163,26 @@
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-   
-       
-    //get ref to photo vc
-        //get segue w id...
-    PhotoViewController *vc = nil;
-  
-    NSAssert(
-             ([vc isKindOfClass:PhotoViewController.class] == YES),@"vc is not photo");
-
-    vc.imageView.image = self.manualInstruction.image;
-
-    [self performSegueWithIdentifier:@"toPhoto" sender:self];
+     // gotcha because I used storyboard drag method, the
+     // ID needed to be coded manually
+     [self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
-
-#pragma mark -
-#pragma mark Button Action
+/* Pattern from BountyHunter
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    
     if ([[segue identifier] isEqualToString:@"showPhoto"]) {
         PhotoViewController *vc = [segue destinationViewController];
 
         NSAssert(
                  ([vc isKindOfClass:PhotoViewController.class] == YES),@"vc is not photo");
         
-        NSAssert(
-                 (vc.imageView != nil),@"photo vc's UIImage was not instantiated by storyboard.");
-        
+        //UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"photoViewController"];
+              
+        vc.manualInstruction = self.manualInstruction;
 
-
-        vc.imageView.image = self.manualInstruction.image;
-        
     }
     
 }
