@@ -10,15 +10,19 @@
 
 @implementation ProjectConstants
 
+ // generally sent from server to app
  NSString *const instructionIDKey = @"instructionID";
  NSString *const instructionMessageKey = @"instructionMsg";
  NSString *const imageReferenceKey = @"imgRef";
  NSString *const imageTitleKey = @"imgTitle";
-
  NSString *const clarifyingInfoKey = @"clarifyingInfo";
  NSString *const fallbackMessageKey = @"fallback";
  NSString *const promptKey = @"prompt";
- NSString *const neededByTimeSecondsKey = @"neededBy";
- NSString *const vehicleTimeSecondsKey = @"vehicleTime";
- NSString *const completionStatusKey = @"completionStatus";
+ NSString *const taskRequestTimeSecondsKey = @"taskRequestTime";
+ NSString *const taskNeededByTimeSecondsKey = @"neededBy";
+
+ // return data sent from app to server
+ NSString *const taskCompletionTimeSecondsKey = @"taskCompletionTime";
+ NSString *const returnStatusKey = @"returnStatus";
+
 @end

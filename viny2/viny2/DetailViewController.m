@@ -10,6 +10,7 @@
 #import "ManualInstruction.h"
 #import "ProjectConstants.h"
 #import "PhotoViewController.h"
+#import "DateUtils.h"
 
 // what is the purpose of this? in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
 
@@ -17,8 +18,8 @@
 
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
 - (void)configureView;
-- (IBAction)changeGreeting:(id)sender;
-- (IBAction)ofOffSwith:(id)sender;
+- (IBAction)completeTask:(id)sender;
+- (IBAction)reportTaskData:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
 
 
@@ -67,21 +68,63 @@
          self.view = somethingElse.view;
          is the same as
          [self setView:[somethingElse view]];
-    
          */
-        
     }
     
 }
 
-- (IBAction)changeGreeting:(id)sender {
-    NSLog(@"change greeting");
+/*
+ User has indicated that the task is complete. Calculate the completion time
+ and update the data model the completion time.  Also update the UI.
+ */
+- (IBAction)completeTask:(id)sender {
+    
+    if([sender isKindOfClass:UIButton.class])
+    {
+        UIButton *doneButton = (UIButton *)sender;
+        NSTimeInterval *completionTime = [self.manualInstruction.countdownTimer timeCountedDownSoFar];
+        
+        // ? need to finish the API for Countdown and DateUtil
+        // Not sure about interval vs date
+        NSObject *completionTimeAsString = nil;
+        
+        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
+        [returnData setObject: completionTimeAsString forKey:taskCompletionTimeSecondsKey];
+
+        // Paint Done button in a depressed state, change color and disable it.
+
+        doneButton.enabled = NO;
+        
+        // Disable UISwitch
+        // ? how to get ref to uiswith?
+    }
+    
+   
 }
 
-- (IBAction)ofOffSwith:(id)sender {
-    NSLog(@"switch ==");
+/* 
+ User has performed the action item for the task.  Get the result and 
+ update the data model.  Enable the Done button. 
+ */
+- (IBAction)reportTaskData:(id)sender {
+    
+    NSAssert(([sender isKindOfClass:UISwitch.class] == YES),@"Only boolean task data is implemented at this time.");
 
-}
+    
+    if([sender isKindOfClass:UISwitch.class])
+    {
+        UISwitch *reportingSwitch = (UISwitch *)sender;
+        BOOL value = [reportingSwitch isOn];
+        NSString *result = (value = YES) ? @"YES" : @"NO"; //better way?
+        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
+        [returnData setObject: result forKey:returnStatusKey];
+    }
+    
+  
+    // enable Done button
+    // how to get ref to done button?
+
+   }
 
 #pragma mark - View Lifecycle
 

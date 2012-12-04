@@ -101,8 +101,8 @@
                   @"Access cRIO Box under the floor in section A and check LED",   instructionMessageKey,
                   @"cRIO Box LED", imageTitleKey,
                   @"Expiration fallback: automatic", fallbackMessageKey,
-                  @"1316461169000", vehicleTimeSecondsKey,
-                  @"1316461172000", neededByTimeSecondsKey,
+                  @"1316461169000", taskRequestTimeSecondsKey,
+                  @"1316461172000", taskNeededByTimeSecondsKey,
                   @"Is LED on?", promptKey,
                   @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",clarifyingInfoKey,
                   
@@ -116,8 +116,8 @@
                   @"Access 24VDC converter box under the floor in section A and check LED",   instructionMessageKey,
                   @"24VDC Converter Box", imageTitleKey,
                   @"Upon expiration will perform automatic failover", fallbackMessageKey,
-                  @"1316461159000", vehicleTimeSecondsKey,
-                  @"1316461162000", neededByTimeSecondsKey,
+                  @"1316461159000", taskRequestTimeSecondsKey,
+                  @"1316461162000", taskNeededByTimeSecondsKey,
                   @"Is LED on?", promptKey,
                   @"Loss of this power source de-energizes safety critical CO2 and O2 sensors. Power recovery to these sensors is required within 1/2 hour for continuation of safe DSH operations. Fallback is automatic",clarifyingInfoKey,
                 
@@ -133,8 +133,8 @@
           @"Verify external spotlight D wall switch inside in section A is ON", instructionMessageKey,   
           @"External Spotlight D Wall Switch",  imageTitleKey,
                   @"Expiration fallback: automatic", fallbackMessageKey,
-                  @"1316461140000", vehicleTimeSecondsKey,
-                  @"1316461144000", neededByTimeSecondsKey,
+                  @"1316461140000", taskRequestTimeSecondsKey,
+                  @"1316461144000", taskNeededByTimeSecondsKey,
                   @"Is light on?", promptKey,
                   nil];
     img = [self fetchImageWithName:@"external-spotlight-d.jpg"];
@@ -148,8 +148,8 @@
                   @"View spotlight through window in external DMM hatch door",   instructionMessageKey,
                 @"Spotlight through DMM hatch door", imageTitleKey,
                   @"Expiration fallback: automatic", fallbackMessageKey,
-                  @"1316461149000", vehicleTimeSecondsKey,
-                  @"1316461152000", neededByTimeSecondsKey,
+                  @"1316461149000", taskRequestTimeSecondsKey,
+                  @"1316461152000", taskNeededByTimeSecondsKey,
                   @"Is DMM hatch door spotlight on?", promptKey,
                   nil];
     img = [self fetchImageWithName:@"view-spotlight.jpg"];
@@ -172,8 +172,7 @@
     NSString *imageName = nil;// todo remove ".png" from imageNameWithExtension
     NSBundle* myBundle = [NSBundle mainBundle];
     NSString* myImage = [myBundle pathForResource:imageName ofType:@"png"];
-    //??undelared ID for ns img
-    //NSImage* imageObj = [[NSImage alloc] initWithContentsOfFile:myImage]; 
+    // NSImage * imageObj = [[NSImage alloc] initWithContentsOfFile:myImage];
     
     // get the img file from the user's doc domain
     NSArray *paths =   NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -190,7 +189,8 @@
     NSAssert ((convertedBack = fileInUserDocdir),@"url conversion");
    
 }
-  
+
+
 /* Get image, either demo image in bundle or setup asynch fetch by constructing its URL. 
    input: filename 
  */

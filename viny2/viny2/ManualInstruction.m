@@ -46,11 +46,14 @@
  */
 
 #import "ManualInstruction.h"
-
+#import "DateUtils.h"
+#import "ProjectConstants.h"
 
 @implementation ManualInstruction
 
 @synthesize image, dictionary;
+@synthesize countdownTimer; //TODO not sure about this
+@synthesize doneInstruction;
 
 
 /* Funnel pattern from Duncan. */
@@ -61,25 +64,21 @@
 
 -(id)initWithDictionary:(NSDictionary *)dict andImage:(UIImage *)img {
     self = [super init];
-    if (self != nil) {
-       
+    if (self != nil) {       
         self.dictionary = dict;
         self.image = img;
-    }   
+    }
+    
+    // init the return data with instruction ID
+    NSString *instructionID = [self.dictionary objectForKey:instructionIDKey];
+    [self.doneInstruction setObject: instructionID forKey:instructionIDKey];
+    
+    // taskRequestTime is info only
+    NSString *neededBy = [self.dictionary objectForKey:taskNeededByTimeSecondsKey];
+    NSDate *expirationTime = [DateUtils getDateFromStringDate:neededBy];
+                             
+    countdownTimer = [[CountdownTimer alloc] initWithStartTime:[DateUtils getVehicleTime] andEndTime:expirationTime];
     return self;
 }
-
-/** 
- Calculates and returns expiration time, which is the difference in between
- vehicle and needed. 
- */
-
-+(NSString *)getExpirationWithStart:(NSString *)vehicleTime andEnd:(NSString *)neededBy {
-    //http://stackoverflow.com/questions/6655446/convert-epoch-time-to-nsdate-with-good-timezone-with-objective-c
-    
-     return @"Needed by 2010-05-03 00:00:00 +0200";
-}
-
-
 
 @end

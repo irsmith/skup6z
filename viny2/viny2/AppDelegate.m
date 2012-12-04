@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MasterViewController.h"
 #import "DataController.h"
+#import "CountdownTimer.h"
 
 void onUncaughtException(NSException *exception)
 {
@@ -28,7 +29,7 @@ void onUncaughtException(NSException *exception)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //http://wiki.sparrow-framework.org/tutorials/a_simple_way_to_let_xcode_stop_on_an_error
+
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     
     // Override point for customization after application launch.
@@ -38,7 +39,7 @@ void onUncaughtException(NSException *exception)
         splitViewController.delegate = (id)navigationController.topViewController;
     }
     DataController *controller = [[DataController alloc] init];
-    self.masterViewController.dataController = controller;// why must this be qualified w self?
+    self.masterViewController.dataController = controller;
     self.dataController = controller;
     
     return YES;

@@ -81,7 +81,7 @@
     return [dataController countOfList];
 }
 
-/* Emit a tabel cell. */
+/* Emit a table cell. */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -90,9 +90,7 @@
     ManualInstruction *mi = [dataController objectInListAtIndex:indexPath.row];
 
     cell.textLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
-    NSString *start = [mi.dictionary objectForKey:vehicleTimeSecondsKey];
-    NSString *end = [mi.dictionary objectForKey:neededByTimeSecondsKey];
-    cell.detailTextLabel.text = [ManualInstruction getExpirationWithStart:start andEnd:end];
+    cell.detailTextLabel.text = [mi.dictionary objectForKey:taskNeededByTimeSecondsKey];
     return cell;
 }
 

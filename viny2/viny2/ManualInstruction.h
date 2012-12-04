@@ -46,6 +46,7 @@
  */
 
 #import <Foundation/Foundation.h>
+#import "CountdownTimer.h"
 
 /* 
  Json data comes as a dictionary array so I will use that for the data mode
@@ -56,13 +57,16 @@
 @interface ManualInstruction : NSObject {
 
 }
-
+// transient - not persisted
 @property (nonatomic, retain) UIImage * image;
+@property (nonatomic, retain) CountdownTimer * countdownTimer;
+// persisted
 @property (nonatomic, retain) NSDictionary * dictionary;
+// return value
+@property (nonatomic, retain) NSMutableDictionary * doneInstruction;
+
 
 -(id)initWithDictionary:(NSDictionary *)dictionary;
 -(id)initWithDictionary:(NSDictionary *)dictionary andImage:(UIImage *)img;
-+(NSString *)getExpirationWithStart:(NSString *)vehicleTime andEnd:(NSString *)neededBy ;
-
 
 @end

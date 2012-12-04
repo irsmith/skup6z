@@ -11,28 +11,40 @@
 
 @interface ProjectConstants : NSObject
 
-/*
-Public dictionary keys
-http://www.numbergrinder.com/2008/12/static-constant-strings-in-objective-c/
-http://stackoverflow.com/questions/538996/constants-in-objective-c
- 
- 
- 
- TODO how to get this to its own class, in the data model?
- */
+// generally sent from server to app
 
-
+/* Combination of procedureID and substep or instruction ID. */
 extern NSString *const instructionIDKey;
+/* The instruction */
 extern NSString *const instructionMessageKey;
-extern NSString *const imageReferenceKey; // image URL
+/* The image description.*/
 extern NSString *const imageTitleKey;
-
-// why ? extern variable has an initializer
+/* Typically, the URL to the image.*/
+extern NSString *const imageReferenceKey; 
+/* Long instruction with clarifying info, possibly a warning. */
 extern NSString *const clarifyingInfoKey;
+/* What happens upon expiration. */
 extern NSString *const fallbackMessageKey;
+/* Short instruction. */
 extern NSString *const promptKey;
-extern NSString *const neededByTimeSecondsKey;
-extern NSString *const vehicleTimeSecondsKey;    // = @"1316461149000";
-extern NSString *const completionStatusKey;      // return code
+/* Task request time in seconds epoch UTC. */
+extern NSString *const taskRequestTimeSecondsKey;
+/* Task expiration time UTC.*/
+extern NSString *const taskNeededByTimeSecondsKey;
+
+
+// return data sent from app to server
+/*
+ User has reported that the task is complete.  The data type is interpreted
+ by the server as an epoch UTF date.
+ */
+extern NSString *const taskCompletionTimeSecondsKey;
+/*
+ User has reported task data result. The data type
+ will be interpreted by the server in the context of the task.
+ For example result YES/NO or a numeric like 0.039 (% concentration CO2)
+ will be parsed by the server in the context of the procedure ID.
+ */
+extern NSString *const returnStatusKey;
 
 @end

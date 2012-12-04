@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB24FB05166D854A00B03B64 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB04166D854A00B03B64 /* DateUtils.m */; };
+		BB24FB08166D856600B03B64 /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB07166D856600B03B64 /* CountdownTimer.m */; };
 		BB60A7EA165FF118003402E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60A7E9165FF118003402E5 /* UIKit.framework */; };
 		BB60A7EC165FF118003402E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60A7EB165FF118003402E5 /* Foundation.framework */; };
 		BB60A7EE165FF118003402E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60A7ED165FF118003402E5 /* CoreGraphics.framework */; };
@@ -49,6 +51,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB24FB03166D854A00B03B64 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
+		BB24FB04166D854A00B03B64 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
+		BB24FB06166D856600B03B64 /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownTimer.h; sourceTree = "<group>"; };
+		BB24FB07166D856600B03B64 /* CountdownTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownTimer.m; sourceTree = "<group>"; };
 		BB60A7E5165FF118003402E5 /* viny2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = viny2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB60A7E9165FF118003402E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB60A7EB165FF118003402E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +172,10 @@
 				BB60A80A165FF119003402E5 /* DetailViewController.h */,
 				BB60A80B165FF119003402E5 /* DetailViewController.m */,
 				BB60A7F0165FF118003402E5 /* Supporting Files */,
+				BB24FB03166D854A00B03B64 /* DateUtils.h */,
+				BB24FB04166D854A00B03B64 /* DateUtils.m */,
+				BB24FB06166D856600B03B64 /* CountdownTimer.h */,
+				BB24FB07166D856600B03B64 /* CountdownTimer.m */,
 			);
 			path = viny2;
 			sourceTree = "<group>";
@@ -367,6 +377,8 @@
 				BB60A830165FFCE7003402E5 /* ManualInstruction.m in Sources */,
 				BBB55E34166A819E00C1BFAE /* PhotoViewController.m in Sources */,
 				BBB55E35166A819E00C1BFAE /* ProjectConstants.m in Sources */,
+				BB24FB05166D854A00B03B64 /* DateUtils.m in Sources */,
+				BB24FB08166D856600B03B64 /* CountdownTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
