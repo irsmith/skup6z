@@ -12,8 +12,9 @@
 
 +(NSString * ) getFormattedStringFromDate:(NSDate *)targetDate ;
 
-+(NSDate * ) getDateFromStringDate:(NSString *)dateInSeconds ;
-
 +(NSDate *)getVehicleTime;
+
++(int) simplyGetSecondsFromTimeInterval:(NSTimeInterval)timeInterval ;
++( NSDateComponents *) getComponentsFromTimeInterval:(NSTimeInterval)timeInterval ;
 
 @end

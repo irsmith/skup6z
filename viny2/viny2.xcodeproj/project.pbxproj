@@ -38,6 +38,7 @@
 		BBB55E35166A819E00C1BFAE /* ProjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */; };
 		BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */; };
 		BBB55E40166A861300C1BFAE /* crio-box-led.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB55E3F166A861300C1BFAE /* crio-box-led.jpg */; };
+		BBF7E316166F0156006A53D9 /* CountdownTimerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF7E315166F0156006A53D9 /* CountdownTimerTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		BBB55E2E166A819E00C1BFAE /* ProjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectConstants.m; sourceTree = "<group>"; };
 		BBB55E2F166A819E00C1BFAE /* view-spotlight.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "view-spotlight.jpg"; sourceTree = "<group>"; };
 		BBB55E3F166A861300C1BFAE /* crio-box-led.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "crio-box-led.jpg"; sourceTree = "<group>"; };
+		BBF7E315166F0156006A53D9 /* CountdownTimerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountdownTimerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				BB24FB04166D854A00B03B64 /* DateUtils.m */,
 				BB24FB06166D856600B03B64 /* CountdownTimer.h */,
 				BB24FB07166D856600B03B64 /* CountdownTimer.m */,
+				BBF7E315166F0156006A53D9 /* CountdownTimerTest.m */,
 			);
 			path = viny2;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB60A821165FF119003402E5 /* viny2Tests.m in Sources */,
+				BBF7E316166F0156006A53D9 /* CountdownTimerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

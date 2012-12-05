@@ -54,12 +54,11 @@
  an irrevelant perf change.  Anyway I wanted to learn dictionary s.
  */
 
-@interface ManualInstruction : NSObject {
+@interface ManualInstruction : NSObject
 
-}
+
 // transient - not persisted
 @property (nonatomic, retain) UIImage * image;
-@property (nonatomic, retain) CountdownTimer * countdownTimer;
 // persisted
 @property (nonatomic, retain) NSDictionary * dictionary;
 // return value

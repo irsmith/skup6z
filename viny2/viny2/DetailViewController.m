@@ -12,22 +12,51 @@
 #import "PhotoViewController.h"
 #import "DateUtils.h"
 
-// what is the purpose of this? in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
-
+// in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
+//use @property and @synthesize together.  Objective-C is doing some legwork in the background to make sure that memory is allocated and deallocated properly when you directly access an object's properties.
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+
 - (void)configureView;
 - (IBAction)completeTask:(id)sender;
 - (IBAction)reportTaskData:(id)sender;
-@property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
-
 
 @end
 
 @implementation DetailViewController
 
 @synthesize manualInstruction;
+
+
+
+#pragma mark -  Countdown Timer and Task Events
+
+// obverving countdown expiration
+- (void) expired {
+    NSLog(@"detail vc: i was notified that cd expired");
+}
+// observing the countdown time
+- (void) fired: (BOOL)success{
+    NSLog(@"detaiil vc: i was notified that cd ticked");
+    
+    
+    // TODO i need to know when cd timer expired
+}
+
+
+
+// mark this task as done
+-(void)markAsDone{
+    // get the next task
+    // if next task exists, start the timer for it
+}
+
+// mark as expired
+-(void)markAsExpired{
+    
+}
 
 #pragma mark - Managing the Data Model
 
@@ -82,11 +111,12 @@
     if([sender isKindOfClass:UIButton.class])
     {
         UIButton *doneButton = (UIButton *)sender;
-        NSTimeInterval *completionTime = [self.manualInstruction.countdownTimer timeCountedDownSoFar];
+        NSDate *completionTime = [DateUtils getVehicleTime];
+        // TODO [self.manualInstruction.countdownTimer timeCountedDownSoFar];
         
         // ? need to finish the API for Countdown and DateUtil
         // Not sure about interval vs date
-        NSObject *completionTimeAsString = nil;
+        NSObject *completionTimeAsString = [DateUtils getFormattedStringFromDate:completionTime];
         
         NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
         [returnData setObject: completionTimeAsString forKey:taskCompletionTimeSecondsKey];
@@ -133,7 +163,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    self.imageView.clipsToBounds = YES; //clip contained photos
+   
 }
 
 - (void)didReceiveMemoryWarning

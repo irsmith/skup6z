@@ -52,8 +52,11 @@
 @implementation ManualInstruction
 
 @synthesize image, dictionary;
-@synthesize countdownTimer; //TODO not sure about this
 @synthesize doneInstruction;
+
+
+
+#pragma mark - Constructors
 
 
 /* Funnel pattern from Duncan. */
@@ -72,13 +75,7 @@
     // init the return data with instruction ID
     NSString *instructionID = [self.dictionary objectForKey:instructionIDKey];
     [self.doneInstruction setObject: instructionID forKey:instructionIDKey];
-    
-    // taskRequestTime is info only
-    NSString *neededBy = [self.dictionary objectForKey:taskNeededByTimeSecondsKey];
-    NSDate *expirationTime = [DateUtils getDateFromStringDate:neededBy];
-                             
-    countdownTimer = [[CountdownTimer alloc] initWithStartTime:[DateUtils getVehicleTime] andEndTime:expirationTime];
-    return self;
+     return self;
 }
 
 @end

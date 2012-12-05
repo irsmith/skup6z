@@ -7,15 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CountdownTimer.h"
 
 @class ManualInstruction;
 
-@interface DetailViewController : UITableViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UITableViewController <UISplitViewControllerDelegate, TimerObserverDelegate>
+{
+    
+    CountdownTimer *countdownTimer;
+    
+}
 
+
+/*
+ Properties are an Objective-C 2.0 feature that allow you more effortless access to your instance variables.These configure the getter and setter methods 
 // Strong ref to our detail item.
 // Weak ref to the GUI elements.
 // Identify these as outlets (like java property listeners).
-// An Oulet is like an electrical outlet except little property values come out and splatter GUI.
+ */
 @property (nonatomic, strong) ManualInstruction *manualInstruction;
 
 @property (nonatomic, weak) IBOutlet UILabel *instructionIdLabel;

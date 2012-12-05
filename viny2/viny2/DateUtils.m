@@ -12,22 +12,40 @@
 
 // From Since.
 +(NSString * ) getFormattedStringFromDate:(NSDate *)targetDate {
-    if (true) {
-        return @"Needed by 2010-05-03 00:00:00 +0200"; //TODO
-    } else {
+  
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateStyle:NSDateFormatterMediumStyle];
         [formatter setTimeStyle:NSDateFormatterMediumStyle];
-        
-        NSDate *date = nil;//[NSDate dateWithTimeIntervalSinceReferenceDate:targetDate];
-        return [formatter stringFromDate:date];
-    }
+        return [formatter stringFromDate:targetDate];
     
 }
 
 
-+(NSDate * ) getDateFromStringDate:(NSString *)dateInSeconds {
-   return [NSDate date]; //TODO
+/*
+ http://stackoverflow.com/questions/1189252/how-to-convert-an-nstimeinterval-seconds-into-minutes
+ */
++(int) simplyGetSecondsFromTimeInterval:(NSTimeInterval)timeInterval {
+    int minutes = floor(timeInterval/60);
+    int seconds = trunc(timeInterval - minutes * 60);
+    return seconds;
+}
+
++( NSDateComponents *) getComponentsFromTimeInterval:(NSTimeInterval)timeInterval {
+       // Get the system calendar
+    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+    
+    // Create the NSDates
+    NSDate *date1 = [[NSDate alloc] init];
+    NSDate *date2 = [[NSDate alloc] initWithTimeInterval:timeInterval sinceDate:date1];
+    
+    // Get conversion to months, days, hours, minutes
+    unsigned int unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSDayCalendarUnit | NSMonthCalendarUnit;
+    
+    NSDateComponents *conversionInfo = [sysCalendar components:unitFlags fromDate:date1  toDate:date2  options:0];
+    
+    NSLog(@"Conversion: %dmin %dhours %ddays %dmoths",[conversionInfo minute], [conversionInfo hour], [conversionInfo day], [conversionInfo month]);
+   
+    return conversionInfo;
 }
 
 /* Not sure what this is in the real world. Perhaps a service.*/

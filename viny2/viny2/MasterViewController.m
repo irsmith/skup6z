@@ -11,11 +11,40 @@
 #import "DataController.h"
 #import "ManualInstruction.h"
 #import "ProjectConstants.h"
+#import "DateUtils.h"
 
 @implementation MasterViewController
 
 @synthesize dataController;
 @synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize countdownTimer; //ProcedureExecutor
+
+#pragma mark -  Countdown Timer and Task Events
+
+// obverving countdown expiration
+- (void) expired {
+    NSLog(@"master vc: i was notified that cd expired");
+}
+// observing the countdown time
+- (void) fired: (BOOL)success{
+    NSLog(@"master vc: i was notified that cd ticked");
+    
+    
+    // TODO i need to know when cd timer expired
+}
+
+
+
+// mark this task as done
+-(void)markAsDone{
+    // get the next task
+    // if next task exists, start the timer for it
+}
+
+// mark as expired
+-(void)markAsExpired{
+    
+}
 
 #pragma mark -
 #pragma mark - View Lifecycle
@@ -41,6 +70,16 @@
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     self.detailViewController.manualInstruction = [self.dataController objectInListAtIndex:self.selectedIndexPath.row]; // or simply, zero
+    
+    // for now, we are starting one timer. This needs to move to the
+    // ProcessExecutor
+    
+    self.countdownTimer = [[CountdownTimer alloc] init] ;
+    self.countdownTimer.delegate = self;
+    
+    [self.countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) 10L];
+    
+    
 }
 
 /* Release any strong references here. */

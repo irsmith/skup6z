@@ -11,6 +11,8 @@
 #import <UIKit/UIKit.h>
 
 @interface PhotoViewController : UIViewController
+
 @property (nonatomic, strong) ManualInstruction *manualInstruction;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
+
 @end
