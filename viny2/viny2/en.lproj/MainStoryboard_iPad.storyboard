@@ -45,29 +45,59 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="tIi-5l-S0i" detailTextLabel="w6Z-QE-e8z" rowHeight="70" style="IBUITableViewCellStyleSubtitle" id="ZSw-0O-9Pw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MasterPrototypeCell" rowHeight="70" id="ZSw-0O-9Pw">
                                 <rect key="frame" x="0.0" y="44" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="69"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tIi-5l-S0i">
-                                            <rect key="frame" x="10" y="15" width="38" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="100" contentMode="left" text="InstructionIDKey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqo-bj-1W0">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="228" id="G5o-lu-4XY"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6Z-QE-e8z">
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="101" contentMode="left" text="taskNeededByTimeSecondsKey" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlP-BP-bCd">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="188" id="rI9-Bu-GaA"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="q5k-R7-Qyo">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="DMt-4c-K15"/>
+                                                <constraint firstAttribute="height" constant="25" id="u04-OJ-UoM"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Needed by" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B3K-Em-sD0">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="58" id="QVD-Q9-Q4j"/>
+                                                <constraint firstAttribute="height" constant="21" id="iWX-p2-J5b"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="q5k-R7-Qyo" firstAttribute="top" secondItem="ZSw-0O-9Pw" secondAttribute="top" constant="26" id="4lJ-8l-GC7"/>
+                                    <constraint firstItem="Vqo-bj-1W0" firstAttribute="top" secondItem="ZSw-0O-9Pw" secondAttribute="top" constant="10" id="J8n-YN-v0s"/>
+                                    <constraint firstItem="HlP-BP-bCd" firstAttribute="baseline" secondItem="B3K-Em-sD0" secondAttribute="baseline" type="default" id="JHE-9n-q89"/>
+                                    <constraint firstItem="Vqo-bj-1W0" firstAttribute="leading" secondItem="ZSw-0O-9Pw" secondAttribute="leading" constant="20" type="default" id="LQh-bZ-zN1"/>
+                                    <constraint firstItem="B3K-Em-sD0" firstAttribute="top" secondItem="Vqo-bj-1W0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="V1u-h0-oPg"/>
+                                    <constraint firstAttribute="trailing" secondItem="q5k-R7-Qyo" secondAttribute="trailing" constant="25" id="WBG-IM-kk1"/>
+                                    <constraint firstItem="HlP-BP-bCd" firstAttribute="top" secondItem="Vqo-bj-1W0" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="sN2-XE-rck"/>
+                                    <constraint firstItem="B3K-Em-sD0" firstAttribute="leading" secondItem="ZSw-0O-9Pw" secondAttribute="leading" constant="19" id="x2d-lI-BcK"/>
+                                    <constraint firstItem="HlP-BP-bCd" firstAttribute="leading" secondItem="ZSw-0O-9Pw" secondAttribute="leading" constant="80" id="yL1-gr-7it"/>
+                                </constraints>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -306,32 +336,6 @@
             <point key="canvasLocation" x="1130" y="178"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DetailViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="completeTask:"/>
-                <relationship kind="action" name="reportTaskData:"/>
-                <relationship kind="outlet" name="SecondsText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="clarifyingInfo" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fallbackMessage" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hoursText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="imageActualPhoto" candidateClass="UITableViewCell"/>
-                <relationship kind="outlet" name="imageTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="instructionIdLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="instructionMessageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="minutesText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="prompt" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="MasterViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MasterViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

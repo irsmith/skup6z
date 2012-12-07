@@ -45,8 +45,7 @@
  NSDate computes time as seconds relative to an absolute reference time: the first instant of January 1, 2001.  
  
  Our server's absolute reference time is epoch, or Unix time, or POSIX time,
- defined as the number of seconds that have elapsed since midnight Coordinated Universal Time (UTC), 1 January 1970,[not
- 
+ defined as the number of seconds that have elapsed since midnight Coordinated Universal Time (UTC), 1 January 1970
  */
 - (void) testDateToString {
     
@@ -54,9 +53,9 @@
     NSString *dateAsString =  [DateUtils getFormattedStringFromDate:date];
     STAssertTrue([dateAsString isEqualToString:@"Dec 31, 2000, 4:00:00 PM"], @"NSDate ref date");
     
-    date = [NSDate dateWithTimeIntervalSince1970:0L];
+    date = [NSDate dateWithTimeIntervalSince1970:1316461152L];
     NSString *str2 =  [DateUtils getFormattedStringFromDate:date];
-    STAssertTrue([str2 isEqualToString:@"Dec 31, 1969, 4:00:00 PM"], @"bad 1970");
+    STAssertTrue([str2 isEqualToString:@"Sep 19, 2011, 12:39:12 PM"], @"bad 1970");
 
     date = [NSDate dateWithTimeIntervalSince1970:123456789L];
     NSString *str3 =  [DateUtils getFormattedStringFromDate:date];
@@ -66,6 +65,26 @@
     NSString *str4 =  [DateUtils getFormattedStringFromDate:date];
     STAssertTrue([str4 isEqualToString:@"Nov 29, 2004, 1:33:09 PM"],nil);
 }
+
+- (void) testStringEpochToDateFormattedDateString {
+    
+    NSString *epoch =  @"1316461169";
+    NSDate *date = [DateUtils getDateFromEpoch:epoch];
+      
+   
+    NSString *actualDateString = [DateUtils getFormattedStringFromDate:date];
+    
+    // assert against hard coded expected date
+    STAssertTrue([actualDateString isEqualToString:@"Sep 19, 2011, 12:39:29 PM"],nil);
+    
+    // assert against calculated expected date
+    NSDate *expectedDate = [NSDate dateWithTimeIntervalSince1970:1316461169L]; 
+    NSString *expectedDateString = [DateUtils getFormattedStringFromDate:expectedDate];
+    STAssertTrue([actualDateString isEqualToString:expectedDateString],nil);
+
+}
+
+
 
 - (void) testIntervalToSeconds {
     

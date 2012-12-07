@@ -127,14 +127,42 @@
 /* Emit a table cell. */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    // Get the object to display and set the value in the cell.
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MasterPrototypeCell" forIndexPath:indexPath];
+    
     ManualInstruction *mi = [dataController objectInListAtIndex:indexPath.row];
 
-    cell.textLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
-    cell.detailTextLabel.text = [mi.dictionary objectForKey:taskNeededByTimeSecondsKey];
+    /* prototype cell for master list */
+	UILabel *instructionID = (UILabel *)[cell viewWithTag:100];
+	instructionID.text = [mi.dictionary objectForKey:instructionMessageKey];
+	UILabel *neededBy = (UILabel *)[cell viewWithTag:101];
+	neededBy.text = [self textForNeededBy:[mi.dictionary objectForKey:taskNeededByTimeSecondsKey]];
+	UIImageView * doneImageView = (UIImageView *) [cell viewWithTag:102];
+    id isDone = [mi.doneInstruction objectForKey:taskCompletionTimeSecondsKey];
+    UIImage *ii = [self imageForDoneStatus: (isDone == nil) ? FALSE : TRUE];
+	doneImageView.image = ii;
+    
     return cell;
+}
+
+-(NSString *)textForNeededBy:(NSString *) keyValue{
+    //NSString *epoch =  @"1316461169";
+    NSDate *date = [DateUtils getDateFromEpoch:keyValue];    
+    
+    NSString *rv = [DateUtils getFormattedStringFromDate:date];
+    
+    return rv;
+}
+                    
+- (UIImage *)imageForDoneStatus:(BOOL)isDone
+{
+    // overkill for switch but did for learning
+	switch (isDone)
+	{
+        case 0: return [UIImage imageNamed:@"Blancovinkje.png"];//return nil;
+		case 1: return [UIImage imageNamed:@"Blancovinkje.png"];
+		
+	}
+	return nil;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

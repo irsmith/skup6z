@@ -10,6 +10,8 @@
 
 @interface DateUtils : NSObject
 
++(NSDate * ) getDateFromEpoch:(NSString *)intervalSince1970Seconds;
+
 +(NSString * ) getFormattedStringFromDate:(NSDate *)targetDate ;
 
 +(NSDate *)getVehicleTime;

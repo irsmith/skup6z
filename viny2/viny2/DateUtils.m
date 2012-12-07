@@ -20,6 +20,12 @@
     
 }
 
++(NSDate * ) getDateFromEpoch:(NSString *)intervalSince1970Seconds {
+    
+    int value = [intervalSince1970Seconds intValue];    
+    return [NSDate dateWithTimeIntervalSince1970:value];
+ 
+}
 
 /*
  http://stackoverflow.com/questions/1189252/how-to-convert-an-nstimeinterval-seconds-into-minutes
