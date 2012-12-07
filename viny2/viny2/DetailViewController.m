@@ -14,6 +14,7 @@
 
 // in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
 //use @property and @synthesize together.  Objective-C is doing some legwork in the background to make sure that memory is allocated and deallocated properly when you directly access an object's properties.
+
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
@@ -27,9 +28,17 @@
 
 @implementation DetailViewController
 
-@synthesize manualInstruction;
-
-
+@synthesize manualInstruction = _manualInstruction;
+@synthesize  instructionIdLabel = _instructionIdLabel;
+@synthesize  instructionMessageLabel= _instructionMessageLabel;
+@synthesize  imageTitleLabel = _imageTitleLabel;
+@synthesize  imageView= _imageView;
+@synthesize  prompt = _prompt;
+@synthesize  fallbackMessage = _fallbackMessage;
+@synthesize  clarifyingInfo = _clarifyingInfo;
+@synthesize  SecondsText = _SecondsText;
+@synthesize  minutesText = _minutesText;
+@synthesize  hoursText = _hoursText;
 
 #pragma mark -  Countdown Timer and Task Events
 
@@ -38,11 +47,12 @@
     NSLog(@"detail vc: i was notified that cd expired");
 }
 // observing the countdown time
-- (void) fired: (BOOL)success{
+- (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds{
+
     NSLog(@"detaiil vc: i was notified that cd ticked");
-    
-    
-    // TODO i need to know when cd timer expired
+    self.hoursText.text = hours;
+    self.minutesText.text = minutes;
+    self.SecondsText.text = seconds;
 }
 
 
@@ -65,8 +75,8 @@
  For iphone this is called by masterViewController prepareForSegue
  */
 -(void)setManualInstruction:(ManualInstruction *)newInstruction {
-    if (manualInstruction != newInstruction){
-        manualInstruction = newInstruction;
+    if (_manualInstruction != newInstruction){
+        _manualInstruction = newInstruction;
         [self configureView];
     }
     
@@ -91,15 +101,26 @@
         self.fallbackMessage.text = [mi.dictionary objectForKey:fallbackMessageKey];
         self.clarifyingInfo.text = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
         : @"--";
-        
+        mi.countdownTimer.delegate1 = self;
 
         /* dot notation 
          self.view = somethingElse.view;
          is the same as
          [self setView:[somethingElse view]];
          */
+        [     self startTask:mi];
     }
+
+}
+
+-(void) startTask:(ManualInstruction *)task{
     
+    double seconds = 10L; // TODO get duration from task.dictionary
+    
+    countdownTimer = [[CountdownTimer alloc] init] ;
+    countdownTimer.delegate1 = self; //register as its observer
+    
+    [countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) seconds];
 }
 
 /*
@@ -126,7 +147,7 @@
         doneButton.enabled = NO;
         
         // Disable UISwitch
-        // ? how to get ref to uiswith?
+     //888
     }
     
    
@@ -217,4 +238,8 @@
     
 }
 
+- (void)viewDidUnload {
+    [self setSecondsText:nil];
+    [super viewDidUnload];
+}
 @end

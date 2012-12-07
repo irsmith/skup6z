@@ -136,13 +136,6 @@
                                             <rect key="frame" x="10" y="1" width="300" height="84"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="UdX-FF-Oi8">
-                                                    <segments>
-                                                        <segment title="HH"/>
-                                                        <segment title="MM"/>
-                                                        <segment title="SS"/>
-                                                    </segments>
-                                                </segmentedControl>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Fallback Explanation" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOP-oZ-nKz">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="4eM-jj-OSJ"/>
@@ -152,14 +145,21 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yFX-mY-rYX">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="97" id="fPu-5d-BDC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="lOP-oZ-nKz" firstAttribute="centerX" secondItem="UdX-FF-Oi8" secondAttribute="centerX" type="default" id="EtA-ok-P4o"/>
+                                            <constraint firstItem="lOP-oZ-nKz" firstAttribute="top" secondItem="yFX-mY-rYX" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4iV-zK-eX0"/>
                                             <constraint firstItem="lOP-oZ-nKz" firstAttribute="centerX" secondItem="xbz-c5-p98" secondAttribute="centerX" type="default" id="Icl-IQ-cJu"/>
-                                            <constraint firstItem="UdX-FF-Oi8" firstAttribute="top" secondItem="xbz-c5-p98" secondAttribute="top" constant="15" id="MVY-4l-sCQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="lOP-oZ-nKz" secondAttribute="bottom" constant="7" id="yKY-4s-Oai"/>
+                                            <constraint firstItem="yFX-mY-rYX" firstAttribute="top" secondItem="xbz-c5-p98" secondAttribute="top" constant="21" id="MEC-No-VMA"/>
+                                            <constraint firstItem="yFX-mY-rYX" firstAttribute="leading" secondItem="xbz-c5-p98" secondAttribute="leading" constant="104" id="eeB-kz-SUR"/>
                                         </constraints>
                                         <connections>
                                             <segue destination="yo0-jD-Gvo" kind="push" identifier="showPhoto" id="D6b-1a-R01"/>
@@ -244,6 +244,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="OPu-Qw-mf6"/>
                     <connections>
+                        <outlet property="SecondsText" destination="yFX-mY-rYX" id="vDB-qE-trO"/>
                         <outlet property="clarifyingInfo" destination="qcC-G5-PpC" id="dR9-Lr-hKI"/>
                         <outlet property="fallbackMessage" destination="lOP-oZ-nKz" id="WNN-Zg-ipY"/>
                         <outlet property="imageActualPhoto" destination="O9b-dc-HlM" id="zcf-Qb-3FK"/>
@@ -260,7 +261,7 @@
         <!--Photo View Controller-->
         <scene sceneID="dIW-2T-CwG">
             <objects>
-                <viewController storyboardIdentifier="photoViewController" id="yo0-jD-Gvo" customClass="PhotoViewController" sceneMemberID="viewController">
+                <viewController id="yo0-jD-Gvo" customClass="PhotoViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ncA-aC-wbM">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -279,6 +280,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oSV-xG-W89"/>
+                    <connections>
+                        <outlet property="imageView" destination="9pd-d3-kok" id="MHg-BY-Txg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="54B-Bq-y1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -291,13 +295,16 @@
             <relationships>
                 <relationship kind="action" name="completeTask:"/>
                 <relationship kind="action" name="reportTaskData:"/>
+                <relationship kind="outlet" name="SecondsText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="clarifyingInfo" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="fallbackMessage" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hoursText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="imageActualPhoto" candidateClass="UITableViewCell"/>
                 <relationship kind="outlet" name="imageTitleLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="instructionIdLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="instructionMessageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="minutesText" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="prompt" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -311,6 +318,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PhotoViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="stestLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
     </classes>

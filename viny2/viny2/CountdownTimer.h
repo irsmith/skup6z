@@ -10,7 +10,8 @@
 
 @protocol TimerObserverDelegate<NSObject>
 @required
-- (void) fired: (BOOL)success;
+
+- (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds;
 - (void) expired;
 @end
 

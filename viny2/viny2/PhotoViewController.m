@@ -16,8 +16,8 @@
 
 @implementation PhotoViewController
 
-@synthesize manualInstruction;
-@synthesize imageView;
+@synthesize manualInstruction = _manualInstruction;
+@synthesize imageView = _imageView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,13 +37,6 @@
     ManualInstruction *mi = self.manualInstruction;
     NSAssert((mi != nil),@"no data.");
     
-    if (self.imageView = nil) {
-       NSAssert((self.imageView = nil),@"photo vc's UIImageView was not instantiated by storyboard. Did you forget to synthsize imageView ? why yes, I did");
-       self.imageView = [[UIImageView alloc]init];
-    } else {
-        [self.imageView setImage:mi.image];
-        //does nothing
-    }
     if (mi) {
         self.imageView.image = mi.image;
     }
@@ -56,7 +49,7 @@
     ManualInstruction *mi = self.manualInstruction;
     NSAssert((mi != nil),@"no data.");
 
-    NSAssert((self.imageView != nil),@"UIImageView was not instantiated by storyboard. Did you forget to synthsize imageView ? Initially I did forget but it's there now.");
+//    NSAssert((self.imageView != nil),@"UIImageView was not instantiated by storyboard. Did you forget to synthsize imageView ? Initially I did forget but it's there now.");
     
     //self._imageView = nil; // compile error propery not found
     

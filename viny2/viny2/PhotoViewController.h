@@ -13,6 +13,5 @@
 @interface PhotoViewController : UIViewController
 
 @property (nonatomic, strong) ManualInstruction *manualInstruction;
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
-
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
 @end

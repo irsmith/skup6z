@@ -35,5 +35,9 @@
 @property (nonatomic, weak) IBOutlet UILabel *fallbackMessage;
 @property (nonatomic, weak) IBOutlet UILabel *clarifyingInfo;
 
+@property (weak, nonatomic) IBOutlet UITextField *SecondsText;
+@property (weak, nonatomic) IBOutlet UITextField *minutesText;
+@property (weak, nonatomic) IBOutlet UITextField *hoursText;
+
 
 @end

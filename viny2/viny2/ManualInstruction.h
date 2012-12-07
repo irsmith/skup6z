@@ -59,6 +59,8 @@
 
 // transient - not persisted
 @property (nonatomic, retain) UIImage * image;
+@property (nonatomic, retain) CountdownTimer * countdownTimer;
+
 // persisted
 @property (nonatomic, retain) NSDictionary * dictionary;
 // return value

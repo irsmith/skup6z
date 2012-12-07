@@ -71,14 +71,7 @@
     
     self.detailViewController.manualInstruction = [self.dataController objectInListAtIndex:self.selectedIndexPath.row]; // or simply, zero
     
-    // for now, we are starting one timer. This needs to move to the
-    // ProcessExecutor
-    
-    self.countdownTimer = [[CountdownTimer alloc] init] ;
-    self.countdownTimer.delegate = self;
-    
-    [self.countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) 10L];
-    
+    [self startTask:self.detailViewController.manualInstruction];
     
 }
 
@@ -106,6 +99,17 @@
 }
 
 
+#pragma mark - Procedure Executor
+-(void) startTask:(ManualInstruction *)task{
+   
+//    double seconds = 10L; // TODO get duration from task.dictionary
+//    
+//    self.countdownTimer = [[CountdownTimer alloc] init] ;
+//    self.countdownTimer.delegate = self; //register as its observer
+//    task.countdownTimer = self.countdownTimer; // allows detail view to register
+//    
+//    [self.countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) seconds];
+}
 
 #pragma mark - Table View Delegate
 

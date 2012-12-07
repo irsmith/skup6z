@@ -51,7 +51,7 @@
 
 @implementation ManualInstruction
 
-@synthesize image, dictionary;
+@synthesize image, dictionary, countdownTimer;
 @synthesize doneInstruction;
 
 

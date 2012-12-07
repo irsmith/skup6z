@@ -24,6 +24,13 @@ int counterA;
 -(void)timerTicked {
     //Happens every time updateTimer is called. Should occur every second.
     NSLog(@"timer: tick");
+    //notify my observers
+    NSString *hours = @"h";
+    NSString *minutes = @"m";
+    NSString *seconds = [[NSNumber numberWithInt:counterA] stringValue];
+    [self.delegate firedWithHours:hours :minutes :seconds];
+    [self.delegate1 firedWithHours:hours :minutes :seconds];
+    
     counterA -= 1;
     
      // TODO issue ManualInstruction is notified of cdtimer events, but detail view
@@ -41,9 +48,8 @@ int counterA;
        }
 
     
-    //notify my observers
-    [[self delegate] fired:YES];
-    
+   
+
 }
 
 /**
