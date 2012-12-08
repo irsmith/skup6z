@@ -25,14 +25,13 @@
 - (void) expired {
     NSLog(@"master vc: i was notified that cd expired");
 }
-// observing the countdown time
-- (void) fired: (BOOL)success{
-    NSLog(@"master vc: i was notified that cd ticked");
-    
-    
-    // TODO i need to know when cd timer expired
-}
 
+
+
+- (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds{
+    
+    NSLog(@"mast vc: ignore notification of ticked");
+}
 
 
 // mark this task as done

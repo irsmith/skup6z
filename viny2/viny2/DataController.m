@@ -173,7 +173,7 @@
     NSBundle* myBundle = [NSBundle mainBundle];
     NSString* myImage = [myBundle pathForResource:imageName ofType:@"png"];
     // NSImage * imageObj = [[NSImage alloc] initWithContentsOfFile:myImage];
-    
+    NSLog(@"%@",myImage);
     // get the img file from the user's doc domain
     NSArray *paths =   NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     

@@ -11,6 +11,7 @@
 #import "ProjectConstants.h"
 #import "PhotoViewController.h"
 #import "DateUtils.h"
+#include <sys/time.h>
 
 // in Create an Action for the Button in Your First IOS App, A class extension in an implementation file is a place for declaring properties and methods that are private to a class. (You will learn more about class extensions in Write Objective-C Code.) Outlets and actions should be private. The Xcode template for a view controller includes a class extension in the implementation file;
 //use @property and @synthesize together.  Objective-C is doing some legwork in the background to make sure that memory is allocated and deallocated properly when you directly access an object's properties.
@@ -28,7 +29,7 @@
 
 @implementation DetailViewController
 
-@synthesize manualInstruction = _manualInstruction;
+@synthesize  manualInstruction = _manualInstruction;
 @synthesize  instructionIdLabel = _instructionIdLabel;
 @synthesize  instructionMessageLabel= _instructionMessageLabel;
 @synthesize  imageTitleLabel = _imageTitleLabel;
@@ -46,10 +47,11 @@
 - (void) expired {
     NSLog(@"detail vc: i was notified that cd expired");
 }
+
 // observing the countdown time
 - (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds{
 
-    NSLog(@"detaiil vc: i was notified that cd ticked");
+    NSLog(@"detaiil vc: was notified that cd ticked");
     self.hoursText.text = hours;
     self.minutesText.text = minutes;
     self.SecondsText.text = seconds;
@@ -147,11 +149,21 @@
         doneButton.enabled = NO;
         
         // Disable UISwitch
-     //888
+        //TODO
+        
+        
+        // play alert
+        [self playSoundWithName:@"BEEP1C"];
+    
     }
     
    
 }
+
+-(void) playSoundWithName:(NSString *)name {
+    
+}
+
 
 /* 
  User has performed the action item for the task.  Get the result and 
@@ -160,7 +172,6 @@
 - (IBAction)reportTaskData:(id)sender {
     
     NSAssert(([sender isKindOfClass:UISwitch.class] == YES),@"Only boolean task data is implemented at this time.");
-
     
     if([sender isKindOfClass:UISwitch.class])
     {
@@ -182,8 +193,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
     [self configureView];
+    
+    NSString *pewPewPath = [[NSBundle mainBundle] pathForResource:@"pew-pew-lei" ofType:@"caf"];
+	NSURL *pewPewURL = [NSURL fileURLWithPath:pewPewPath];
+	AudioServicesCreateSystemSoundID((__bridge CFURLRef)pewPewURL, &_pewPewSound);
    
 }
 

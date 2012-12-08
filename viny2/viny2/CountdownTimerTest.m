@@ -70,8 +70,6 @@
     
     NSString *epoch =  @"1316461169";
     NSDate *date = [DateUtils getDateFromEpoch:epoch];
-      
-   
     NSString *actualDateString = [DateUtils getFormattedStringFromDate:date];
     
     // assert against hard coded expected date

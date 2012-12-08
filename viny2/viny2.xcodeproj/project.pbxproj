@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		BB0ADBB616728F930061EF77 /* Blancovinkje.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBB516728F930061EF77 /* Blancovinkje.png */; };
+		BB0ADBC11672B4080061EF77 /* AudioTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0ADBC01672B4080061EF77 /* AudioTest.m */; };
+		BB0ADBC31672B5260061EF77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */; };
+		BB0ADBC91672BC460061EF77 /* beep1c.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBC81672BC450061EF77 /* beep1c.caf */; };
+		BB0ADBCB1672BDB60061EF77 /* beepkind.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBCA1672BDB60061EF77 /* beepkind.caf */; };
 		BB24FB05166D854A00B03B64 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB04166D854A00B03B64 /* DateUtils.m */; };
 		BB24FB08166D856600B03B64 /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB07166D856600B03B64 /* CountdownTimer.m */; };
 		BB60A7EA165FF118003402E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60A7E9165FF118003402E5 /* UIKit.framework */; };
@@ -54,6 +58,10 @@
 
 /* Begin PBXFileReference section */
 		BB0ADBB516728F930061EF77 /* Blancovinkje.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blancovinkje.png; sourceTree = "<group>"; };
+		BB0ADBC01672B4080061EF77 /* AudioTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioTest.m; sourceTree = "<group>"; };
+		BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
+		BB0ADBC81672BC450061EF77 /* beep1c.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1c.caf; sourceTree = "<group>"; };
+		BB0ADBCA1672BDB60061EF77 /* beepkind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beepkind.caf; sourceTree = "<group>"; };
 		BB24FB03166D854A00B03B64 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		BB24FB04166D854A00B03B64 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		BB24FB06166D856600B03B64 /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownTimer.h; sourceTree = "<group>"; };
@@ -109,6 +117,7 @@
 				BB60A7EA165FF118003402E5 /* UIKit.framework in Frameworks */,
 				BB60A7EC165FF118003402E5 /* Foundation.framework in Frameworks */,
 				BB60A7EE165FF118003402E5 /* CoreGraphics.framework in Frameworks */,
+				BB0ADBC31672B5260061EF77 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +156,7 @@
 		BB60A7E8165FF118003402E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */,
 				BB60A7E9165FF118003402E5 /* UIKit.framework */,
 				BB60A7EB165FF118003402E5 /* Foundation.framework */,
 				BB60A7ED165FF118003402E5 /* CoreGraphics.framework */,
@@ -187,6 +197,8 @@
 		BB60A7F0165FF118003402E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB0ADBCA1672BDB60061EF77 /* beepkind.caf */,
+				BB0ADBC81672BC450061EF77 /* beep1c.caf */,
 				BB0ADBB516728F930061EF77 /* Blancovinkje.png */,
 				BB60A7F1165FF118003402E5 /* viny2-Info.plist */,
 				BB60A7F2165FF118003402E5 /* InfoPlist.strings */,
@@ -206,6 +218,7 @@
 				BB60A81F165FF119003402E5 /* viny2Tests.h */,
 				BB60A820165FF119003402E5 /* viny2Tests.m */,
 				BB60A81A165FF119003402E5 /* Supporting Files */,
+				BB0ADBC01672B4080061EF77 /* AudioTest.m */,
 			);
 			path = viny2Tests;
 			sourceTree = "<group>";
@@ -342,6 +355,8 @@
 				BBB55E36166A819E00C1BFAE /* view-spotlight.jpg in Resources */,
 				BBB55E40166A861300C1BFAE /* crio-box-led.jpg in Resources */,
 				BB0ADBB616728F930061EF77 /* Blancovinkje.png in Resources */,
+				BB0ADBC91672BC460061EF77 /* beep1c.caf in Resources */,
+				BB0ADBCB1672BDB60061EF77 /* beepkind.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +410,7 @@
 			files = (
 				BB60A821165FF119003402E5 /* viny2Tests.m in Sources */,
 				BBF7E316166F0156006A53D9 /* CountdownTimerTest.m in Sources */,
+				BB0ADBC11672B4080061EF77 /* AudioTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +515,10 @@
 		BB60A825165FF119003402E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "viny2/viny2-Prefix.pch";
 				INFOPLIST_FILE = "viny2/viny2-Info.plist";
@@ -511,6 +531,10 @@
 		BB60A826165FF119003402E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "viny2/viny2-Prefix.pch";
 				INFOPLIST_FILE = "viny2/viny2-Info.plist";

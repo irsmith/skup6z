@@ -24,5 +24,4 @@
  everytime the popover is hidden and shown.*/
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 @property (nonatomic, retain) CountdownTimer * countdownTimer;
-
 @end

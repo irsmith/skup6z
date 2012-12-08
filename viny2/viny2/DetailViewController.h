@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CountdownTimer.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @class ManualInstruction;
 
@@ -15,7 +16,8 @@
 {
     
     CountdownTimer *countdownTimer;
-    
+    SystemSoundID _pewPewSound;
+
 }
 
 
@@ -34,10 +36,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *prompt;
 @property (nonatomic, weak) IBOutlet UILabel *fallbackMessage;
 @property (nonatomic, weak) IBOutlet UILabel *clarifyingInfo;
-
 @property (weak, nonatomic) IBOutlet UITextField *SecondsText;
 @property (weak, nonatomic) IBOutlet UITextField *minutesText;
 @property (weak, nonatomic) IBOutlet UITextField *hoursText;
-
 
 @end
