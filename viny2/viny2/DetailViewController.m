@@ -20,8 +20,20 @@
 
 @property (weak, nonatomic) IBOutlet UITableViewCell *imageActualPhoto;
 @property (strong, nonatomic) UIPopoverController *masterPopoverController;
+@property (nonatomic, weak) IBOutlet UILabel *instructionIdLabel;
+@property (nonatomic, weak) IBOutlet UILabel *instructionMessageLabel;
+@property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UILabel *prompt;
+@property (nonatomic, weak) IBOutlet UILabel *fallbackMessage;
+@property (nonatomic, weak) IBOutlet UILabel *clarifyingInfo;
+@property (weak, nonatomic) IBOutlet UITextField *SecondsText;
+@property (weak, nonatomic) IBOutlet UITextField *minutesText;
+@property (weak, nonatomic) IBOutlet UITextField *hoursText;
+@property (weak, nonatomic) IBOutlet UISwitch *taskResultReporter;
+@property (weak, nonatomic) IBOutlet UIButton *taskDone;
 
-- (void)configureView;
+- (void)configureView;  
 - (IBAction)completeTask:(id)sender;
 - (IBAction)reportTaskData:(id)sender;
 
@@ -91,7 +103,9 @@
 /* Update the view based on the model's data.*/
 - (void)configureView
 {
-    
+
+    self.taskResultReporter.enabled = YES;
+
     ManualInstruction *mi = self.manualInstruction;
     NSAssert( (mi != nil),@"detailV configureView: no data");
     if (mi) {
@@ -116,6 +130,9 @@
 }
 
 -(void) startTask:(ManualInstruction *)task{
+    
+    //self.taskDone.enabled = NO;
+    self.taskResultReporter.enabled = YES;
     
     double seconds = 10L; // TODO get duration from task.dictionary
     
@@ -144,25 +161,15 @@
         NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
         [returnData setObject: completionTimeAsString forKey:taskCompletionTimeSecondsKey];
 
-        // Paint Done button in a depressed state, change color and disable it.
-
+        // TODO Paint Done button in a depressed state, change color
         doneButton.enabled = NO;
-        
-        // Disable UISwitch
-        //TODO
-        
-        
-        // play alert
-        [self playSoundWithName:@"BEEP1C"];
-    
+        self.taskResultReporter.enabled = NO;
+    	AudioServicesPlaySystemSound(taskDoneSound);
+
     }
-    
-   
 }
 
--(void) playSoundWithName:(NSString *)name {
-    
-}
+
 
 
 /* 
@@ -181,10 +188,10 @@
         NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
         [returnData setObject: result forKey:returnStatusKey];
     }
-    
-  
-    // enable Done button
-    // how to get ref to done button?
+    //self.taskDone.enabled = YES;
+    self.taskResultReporter.enabled = NO;
+    AudioServicesPlaySystemSound(taskDataReportedSound);
+
 
    }
 
@@ -196,11 +203,32 @@
 	
     [self configureView];
     
-    NSString *pewPewPath = [[NSBundle mainBundle] pathForResource:@"pew-pew-lei" ofType:@"caf"];
-	NSURL *pewPewURL = [NSURL fileURLWithPath:pewPewPath];
-	AudioServicesCreateSystemSoundID((__bridge CFURLRef)pewPewURL, &_pewPewSound);
-   
+    [self createSounds];
+   }
+
+
+- (void)createSounds {
+    
+//    NSString *pewPewPath = [[NSBundle mainBundle] pathForResource:@"pew-pew-lei" ofType:@"caf"];
+//	NSURL *pewPewURL = [NSURL fileURLWithPath:pewPewPath];
+//	AudioServicesCreateSystemSoundID((__bridge CFURLRef)pewPewURL, &_pewPewSound);
+    
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:taskDataReportedSoundTag ofType:@"caf"];
+    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDataReportedSound);
+
+    soundPath = [[NSBundle mainBundle] pathForResource:taskDoneSoundTag ofType:@"caf"];
+    soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDoneSound);
+    
+    soundPath = [[NSBundle mainBundle] pathForResource:taskExpirededSoundTag ofType:@"caf"];
+    soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskExpirededSound);
+    
+
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {

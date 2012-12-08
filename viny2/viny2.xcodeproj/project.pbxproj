@@ -12,6 +12,9 @@
 		BB0ADBC31672B5260061EF77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */; };
 		BB0ADBC91672BC460061EF77 /* beep1c.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBC81672BC450061EF77 /* beep1c.caf */; };
 		BB0ADBCB1672BDB60061EF77 /* beepkind.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBCA1672BDB60061EF77 /* beepkind.caf */; };
+		BB0ADBCD1672BFB60061EF77 /* badumm.caf in Resources */ = {isa = PBXBuildFile; fileRef = BB0ADBCC1672BFB60061EF77 /* badumm.caf */; };
+		BB0ADBD71672F5780061EF77 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0ADBD61672F5780061EF77 /* AVFoundation.framework */; };
+		BB0ADBD91672F69C0061EF77 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0ADBD81672F69C0061EF77 /* AudioToolbox.framework */; };
 		BB24FB05166D854A00B03B64 /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB04166D854A00B03B64 /* DateUtils.m */; };
 		BB24FB08166D856600B03B64 /* CountdownTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB24FB07166D856600B03B64 /* CountdownTimer.m */; };
 		BB60A7EA165FF118003402E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB60A7E9165FF118003402E5 /* UIKit.framework */; };
@@ -62,6 +65,9 @@
 		BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AudioToolbox.framework; sourceTree = "<group>"; };
 		BB0ADBC81672BC450061EF77 /* beep1c.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beep1c.caf; sourceTree = "<group>"; };
 		BB0ADBCA1672BDB60061EF77 /* beepkind.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = beepkind.caf; sourceTree = "<group>"; };
+		BB0ADBCC1672BFB60061EF77 /* badumm.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = badumm.caf; sourceTree = "<group>"; };
+		BB0ADBD61672F5780061EF77 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BB0ADBD81672F69C0061EF77 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		BB24FB03166D854A00B03B64 /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		BB24FB04166D854A00B03B64 /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		BB24FB06166D856600B03B64 /* CountdownTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountdownTimer.h; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0ADBD91672F69C0061EF77 /* AudioToolbox.framework in Frameworks */,
+				BB0ADBD71672F5780061EF77 /* AVFoundation.framework in Frameworks */,
 				BB60A7EA165FF118003402E5 /* UIKit.framework in Frameworks */,
 				BB60A7EC165FF118003402E5 /* Foundation.framework in Frameworks */,
 				BB60A7EE165FF118003402E5 /* CoreGraphics.framework in Frameworks */,
@@ -137,6 +145,7 @@
 		BB60A7DA165FF118003402E5 = {
 			isa = PBXGroup;
 			children = (
+				BB0ADBD81672F69C0061EF77 /* AudioToolbox.framework */,
 				BB60A7EF165FF118003402E5 /* viny2 */,
 				BB60A819165FF119003402E5 /* viny2Tests */,
 				BB60A7E8165FF118003402E5 /* Frameworks */,
@@ -156,6 +165,7 @@
 		BB60A7E8165FF118003402E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB0ADBD61672F5780061EF77 /* AVFoundation.framework */,
 				BB0ADBC21672B5260061EF77 /* AudioToolbox.framework */,
 				BB60A7E9165FF118003402E5 /* UIKit.framework */,
 				BB60A7EB165FF118003402E5 /* Foundation.framework */,
@@ -197,6 +207,7 @@
 		BB60A7F0165FF118003402E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BB0ADBCC1672BFB60061EF77 /* badumm.caf */,
 				BB0ADBCA1672BDB60061EF77 /* beepkind.caf */,
 				BB0ADBC81672BC450061EF77 /* beep1c.caf */,
 				BB0ADBB516728F930061EF77 /* Blancovinkje.png */,
@@ -357,6 +368,7 @@
 				BB0ADBB616728F930061EF77 /* Blancovinkje.png in Resources */,
 				BB0ADBC91672BC460061EF77 /* beep1c.caf in Resources */,
 				BB0ADBCB1672BDB60061EF77 /* beepkind.caf in Resources */,
+				BB0ADBCD1672BFB60061EF77 /* badumm.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

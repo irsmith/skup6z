@@ -25,4 +25,9 @@
  NSString *const taskCompletionTimeSecondsKey = @"taskCompletionTime";
  NSString *const returnStatusKey = @"returnStatus";
 
+ // sounds
+ NSString *const taskDataReportedSoundTag = @"beepkind";
+ NSString *const taskDoneSoundTag = @"beep1c";
+ NSString *const taskExpirededSoundTag = @"badumm";
+
 @end

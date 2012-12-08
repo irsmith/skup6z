@@ -47,4 +47,9 @@ extern NSString *const taskCompletionTimeSecondsKey;
  */
 extern NSString *const returnStatusKey;
 
+// sounds
+extern NSString  *const taskDataReportedSoundTag;
+extern NSString  *const taskDoneSoundTag;
+extern NSString  *const taskExpirededSoundTag;
+
 @end

@@ -16,8 +16,10 @@
 {
     
     CountdownTimer *countdownTimer;
-    SystemSoundID _pewPewSound;
-
+    SystemSoundID taskDataReportedSound;
+    SystemSoundID taskDoneSound;
+    SystemSoundID taskExpirededSound;
+    
 }
 
 
@@ -28,16 +30,5 @@
 // Identify these as outlets (like java property listeners).
  */
 @property (nonatomic, strong) ManualInstruction *manualInstruction;
-
-@property (nonatomic, weak) IBOutlet UILabel *instructionIdLabel;
-@property (nonatomic, weak) IBOutlet UILabel *instructionMessageLabel;
-@property (nonatomic, weak) IBOutlet UILabel *imageTitleLabel;
-@property (nonatomic, weak) IBOutlet UIImageView *imageView;
-@property (nonatomic, weak) IBOutlet UILabel *prompt;
-@property (nonatomic, weak) IBOutlet UILabel *fallbackMessage;
-@property (nonatomic, weak) IBOutlet UILabel *clarifyingInfo;
-@property (weak, nonatomic) IBOutlet UITextField *SecondsText;
-@property (weak, nonatomic) IBOutlet UITextField *minutesText;
-@property (weak, nonatomic) IBOutlet UITextField *hoursText;
 
 @end
