@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "CountdownTimer.h"
-
+#import "DetailViewController.h"
 @class DetailViewController;
 
 @class DataController;
 
 
-@interface MasterViewController : UITableViewController <TimerObserverDelegate>
+@interface MasterViewController : UITableViewController <TimerObserverDelegate,DetailViewControllerDelegate>
 
 @property (strong, nonatomic) DetailViewController *detailViewController;
 @property (nonatomic, strong) DataController *dataController;

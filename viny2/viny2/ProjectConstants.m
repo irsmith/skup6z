@@ -26,8 +26,8 @@
  NSString *const returnStatusKey = @"returnStatus";
 
  // sounds
- NSString *const taskDataReportedSoundTag = @"beepkind";
- NSString *const taskDoneSoundTag = @"beep1c";
+ NSString *const taskDataReportedSoundTag = @"beep1c";
+ NSString *const taskDoneSoundTag = @"beepkind";
  NSString *const taskExpirededSoundTag = @"badumm";
 
 @end

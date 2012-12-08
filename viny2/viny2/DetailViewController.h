@@ -11,6 +11,12 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 @class ManualInstruction;
+@class DetailViewController;
+
+@protocol DetailViewControllerDelegate <NSObject>
+- (void)didCancel:(DetailViewController *)controller;
+- (void)didCompleteTask:(DetailViewController *)controller;
+@end
 
 @interface DetailViewController : UITableViewController <UISplitViewControllerDelegate, TimerObserverDelegate>
 {
@@ -30,5 +36,7 @@
 // Identify these as outlets (like java property listeners).
  */
 @property (nonatomic, strong) ManualInstruction *manualInstruction;
+@property (nonatomic, weak) id <DetailViewControllerDelegate> delegate;
 
 @end
+

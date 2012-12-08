@@ -42,6 +42,7 @@
 @implementation DetailViewController
 
 @synthesize  manualInstruction = _manualInstruction;
+@synthesize  delegate;
 @synthesize  instructionIdLabel = _instructionIdLabel;
 @synthesize  instructionMessageLabel= _instructionMessageLabel;
 @synthesize  imageTitleLabel = _imageTitleLabel;
@@ -53,180 +54,24 @@
 @synthesize  minutesText = _minutesText;
 @synthesize  hoursText = _hoursText;
 
-#pragma mark -  Countdown Timer and Task Events
-
-// obverving countdown expiration
-- (void) expired {
-    NSLog(@"detail vc: i was notified that cd expired");
-}
-
-// observing the countdown time
-- (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds{
-
-    NSLog(@"detaiil vc: was notified that cd ticked");
-    self.hoursText.text = hours;
-    self.minutesText.text = minutes;
-    self.SecondsText.text = seconds;
-}
-
-
-
-// mark this task as done
--(void)markAsDone{
-    // get the next task
-    // if next task exists, start the timer for it
-}
-
-// mark as expired
--(void)markAsExpired{
-    
-}
-
-#pragma mark - Managing the Data Model
-
-
-/* Setter for the detail item.
- For iphone this is called by masterViewController prepareForSegue
- */
--(void)setManualInstruction:(ManualInstruction *)newInstruction {
-    if (_manualInstruction != newInstruction){
-        _manualInstruction = newInstruction;
-        [self configureView];
-    }
-    
-    // Hide the split view's popover after user has selected an item from it.
-    if (nil != self.masterPopoverController) {
-        [self.masterPopoverController dismissPopoverAnimated:YES];
-    }
-}
-
-/* Update the view based on the model's data.*/
-- (void)configureView
-{
-
-    self.taskResultReporter.enabled = YES;
-
-    ManualInstruction *mi = self.manualInstruction;
-    NSAssert( (mi != nil),@"detailV configureView: no data");
-    if (mi) {
-        self.instructionIdLabel.text = [mi.dictionary objectForKey:instructionIDKey];
-        self.instructionMessageLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
-        self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
-        self.imageView.image = mi.image;
-        self.prompt.text = [mi.dictionary objectForKey:promptKey];
-        self.fallbackMessage.text = [mi.dictionary objectForKey:fallbackMessageKey];
-        self.clarifyingInfo.text = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
-        : @"--";
-        mi.countdownTimer.delegate1 = self;
-
-        /* dot notation 
-         self.view = somethingElse.view;
-         is the same as
-         [self setView:[somethingElse view]];
-         */
-        [     self startTask:mi];
-    }
-
-}
-
--(void) startTask:(ManualInstruction *)task{
-    
-    //self.taskDone.enabled = NO;
-    self.taskResultReporter.enabled = YES;
-    
-    double seconds = 10L; // TODO get duration from task.dictionary
-    
-    countdownTimer = [[CountdownTimer alloc] init] ;
-    countdownTimer.delegate1 = self; //register as its observer
-    
-    [countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) seconds];
-}
-
-/*
- User has indicated that the task is complete. Calculate the completion time
- and update the data model the completion time.  Also update the UI.
- */
-- (IBAction)completeTask:(id)sender {
-    
-    if([sender isKindOfClass:UIButton.class])
-    {
-        UIButton *doneButton = (UIButton *)sender;
-        NSDate *completionTime = [DateUtils getVehicleTime];
-        // TODO [self.manualInstruction.countdownTimer timeCountedDownSoFar];
-        
-        // ? need to finish the API for Countdown and DateUtil
-        // Not sure about interval vs date
-        NSObject *completionTimeAsString = [DateUtils getFormattedStringFromDate:completionTime];
-        
-        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
-        [returnData setObject: completionTimeAsString forKey:taskCompletionTimeSecondsKey];
-
-        // TODO Paint Done button in a depressed state, change color
-        doneButton.enabled = NO;
-        self.taskResultReporter.enabled = NO;
-    	AudioServicesPlaySystemSound(taskDoneSound);
-
-    }
-}
-
-
-
-
-/* 
- User has performed the action item for the task.  Get the result and 
- update the data model.  Enable the Done button. 
- */
-- (IBAction)reportTaskData:(id)sender {
-    
-    NSAssert(([sender isKindOfClass:UISwitch.class] == YES),@"Only boolean task data is implemented at this time.");
-    
-    if([sender isKindOfClass:UISwitch.class])
-    {
-        UISwitch *reportingSwitch = (UISwitch *)sender;
-        BOOL value = [reportingSwitch isOn];
-        NSString *result = (value = YES) ? @"YES" : @"NO"; //better way?
-        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
-        [returnData setObject: result forKey:returnStatusKey];
-    }
-    //self.taskDone.enabled = YES;
-    self.taskResultReporter.enabled = NO;
-    AudioServicesPlaySystemSound(taskDataReportedSound);
-
-
-   }
-
 #pragma mark - View Lifecycle
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
 	
     [self configureView];
     
     [self createSounds];
-   }
-
-
-- (void)createSounds {
-    
-//    NSString *pewPewPath = [[NSBundle mainBundle] pathForResource:@"pew-pew-lei" ofType:@"caf"];
-//	NSURL *pewPewURL = [NSURL fileURLWithPath:pewPewPath];
-//	AudioServicesCreateSystemSoundID((__bridge CFURLRef)pewPewURL, &_pewPewSound);
-    
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:taskDataReportedSoundTag ofType:@"caf"];
-    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDataReportedSound);
-
-    soundPath = [[NSBundle mainBundle] pathForResource:taskDoneSoundTag ofType:@"caf"];
-    soundURL = [NSURL fileURLWithPath:soundPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDoneSound);
-    
-    soundPath = [[NSBundle mainBundle] pathForResource:taskExpirededSoundTag ofType:@"caf"];
-    soundURL = [NSURL fileURLWithPath:soundPath];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskExpirededSound);
-    
-
 }
+
+/* Release any strong references here. */
+- (void)viewDidUnload
+{
+    self.manualInstruction = nil;
+    self.masterPopoverController = nil;
+    [super viewDidUnload];
+}
+
 
 
 
@@ -257,9 +102,9 @@
 
 -(void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-     // gotcha because I used storyboard drag method, the
-     // ID needed to be coded manually
-     [self performSegueWithIdentifier:@"showPhoto" sender:self];
+    // gotcha because I used storyboard drag method, the
+    // ID needed to be coded manually
+    [self performSegueWithIdentifier:@"showPhoto" sender:self];
 }
 
 /* Pattern from BountyHunter
@@ -269,20 +114,169 @@
     
     if ([[segue identifier] isEqualToString:@"showPhoto"]) {
         PhotoViewController *vc = [segue destinationViewController];
-
+        
         NSAssert(
                  ([vc isKindOfClass:PhotoViewController.class] == YES),@"vc is not photo");
         
         //UIViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"photoViewController"];
-              
+        
         vc.manualInstruction = self.manualInstruction;
-
+        
     }
     
 }
 
-- (void)viewDidUnload {
-    [self setSecondsText:nil];
-    [super viewDidUnload];
+
+#pragma mark - Managing the Data Model
+
+/* Setter for the detail item.
+ For iphone this is called by masterViewController prepareForSegue
+ */
+-(void)setManualInstruction:(ManualInstruction *)newInstruction {
+    if (_manualInstruction != newInstruction){
+        _manualInstruction = newInstruction;
+        [self configureView];
+    }
+    
+    // Hide the split view's popover after user has selected an item from it.
+    if (nil != self.masterPopoverController) {
+        [self.masterPopoverController dismissPopoverAnimated:YES];
+    }
 }
+
+/* Update the view based on the model's data.*/
+- (void)configureView {
+    ManualInstruction *mi = self.manualInstruction;
+    NSAssert( (mi != nil),@"detailV configureView: no data");
+    if (mi) {
+        self.instructionIdLabel.text = [mi.dictionary objectForKey:instructionIDKey];
+        self.instructionMessageLabel.text = [mi.dictionary objectForKey:instructionMessageKey];
+        self.imageTitleLabel.text = [mi.dictionary objectForKey:imageTitleKey];
+        self.imageView.image = mi.image;
+        self.prompt.text = [mi.dictionary objectForKey:promptKey];
+        self.fallbackMessage.text = [mi.dictionary objectForKey:fallbackMessageKey];
+        self.clarifyingInfo.text = ([mi.dictionary objectForKey:clarifyingInfoKey]) ? [mi.dictionary objectForKey:clarifyingInfoKey]
+        : @"--";
+        mi.countdownTimer.delegate1 = self;
+        
+        /* dot notation
+         self.view = somethingElse.view;
+         is the same as
+         [self setView:[somethingElse view]];
+         */
+        [     self startTask:mi];
+    }
+    
+}
+
+// obverving countdown expiration
+- (void) expired {
+    NSLog(@"detail vc: i was notified that cd expired");
+}
+
+// observing the countdown time
+- (void) firedWithHours: (NSString *)hours: (NSString *)minutes: (NSString *)seconds{
+
+    NSLog(@"detaiil vc: was notified that cd ticked");
+    self.hoursText.text = hours;
+    self.minutesText.text = minutes;
+    self.SecondsText.text = seconds;
+}
+
+
+// mark this task as done
+-(void)markAsDone{
+    // get the next task
+    // if next task exists, start the timer for it
+}
+
+// mark as expired
+-(void)markAsExpired{
+    
+}
+
+
+
+-(void) startTask:(ManualInstruction *)task{
+    
+    self.taskResultReporter.enabled = YES;
+    double seconds = 10L; // TODO get duration from task.dictionary
+    
+    countdownTimer = [[CountdownTimer alloc] init] ;
+    countdownTimer.delegate1 = self; //register as its observer
+    
+    [countdownTimer startTimerWithStartTime:[DateUtils getVehicleTime] andDuration:(NSTimeInterval) seconds];
+}
+
+/*
+ User has indicated that the task is complete. Calculate the completion time
+ and update the data model the completion time.  Also update the UI.
+ */
+- (IBAction)completeTask:(id)sender {
+    
+    if([sender isKindOfClass:UIButton.class])
+    {
+        //UIButton *doneButton = (UIButton *)sender;
+        NSDate *completionTime = [DateUtils getVehicleTime];
+        // TODO [self.manualInstruction.countdownTimer timeCountedDownSoFar];
+        
+        // ? need to finish the API for Countdown and DateUtil
+        // Not sure about interval vs date
+        NSObject *completionTimeAsString = [DateUtils getFormattedStringFromDate:completionTime];
+        
+        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
+        [returnData setObject: completionTimeAsString forKey:taskCompletionTimeSecondsKey];
+
+        // TODO Paint Done button in a depressed state, change color
+        self.taskResultReporter.enabled = NO;
+        self.taskDone.enabled = NO;
+    	AudioServicesPlaySystemSound(taskDoneSound);
+
+        [self.delegate didCompleteTask:self];
+    }
+}
+
+
+
+
+/* 
+ User has performed the action item for the task.  Get the result and 
+ update the data model.  Enable the Done button. 
+ */
+- (IBAction)reportTaskData:(id)sender {
+    
+    NSAssert(([sender isKindOfClass:UISwitch.class] == YES),@"Only boolean task data is implemented at this time.");
+    
+    if([sender isKindOfClass:UISwitch.class])
+    {
+        UISwitch *reportingSwitch = (UISwitch *)sender;
+        BOOL value = [reportingSwitch isOn];
+        NSString *result = (value = YES) ? @"YES" : @"NO"; //better way?
+        NSMutableDictionary *returnData = self.manualInstruction.doneInstruction;
+        [returnData setObject: result forKey:returnStatusKey];
+    }
+    self.taskResultReporter.enabled = NO;
+    AudioServicesPlaySystemSound(taskDataReportedSound);
+    self.taskDone.enabled = YES;
+
+
+   }
+
+#pragma mark -  Private util
+- (void)createSounds {
+    
+    NSString *soundPath = [[NSBundle mainBundle] pathForResource:taskDataReportedSoundTag ofType:@"caf"];
+    NSURL *soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDataReportedSound);
+    
+    soundPath = [[NSBundle mainBundle] pathForResource:taskDoneSoundTag ofType:@"caf"];
+    soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskDoneSound);
+    
+    soundPath = [[NSBundle mainBundle] pathForResource:taskExpirededSoundTag ofType:@"caf"];
+    soundURL = [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)soundURL, &taskExpirededSound);
+}
+
+
 @end
